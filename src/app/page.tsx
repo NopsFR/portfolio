@@ -53,6 +53,16 @@ const SecurityDemo = dynamic(
   { ssr: false }
 );
 
+const Cybersecurity101 = dynamic(
+  () => import('@/components/sections').then((mod) => mod.Cybersecurity101),
+  { ssr: false }
+);
+
+const GitHubSecurity = dynamic(
+  () => import('@/components/sections').then((mod) => mod.GitHubSecurity),
+  { ssr: false }
+);
+
 const ChatBot = dynamic(
   () => import('@/components/sections').then((mod) => mod.ChatBot),
   { ssr: false }
@@ -98,6 +108,12 @@ export default function Home() {
 
       {/* Security Demo Section */}
       <SecurityDemo />
+
+      {/* Cybersecurity 101 Section */}
+      <Cybersecurity101 />
+
+      {/* GitHub Security Resources Section */}
+      <GitHubSecurity />
 
       {/* Contact Section */}
       <Contact />

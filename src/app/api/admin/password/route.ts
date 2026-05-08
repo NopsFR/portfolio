@@ -44,16 +44,17 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Verify current password
-    const currentHash = process.env.ADMIN_PASSWORD_HASH;
+    // Verify current password - check both ADMIN_PASSWORD_HASH and ADMIN_PASSWORD
+    const currentHash = process.env.ADMIN_PASSWORD_HASH || process.env.ADMIN_PASSWORD;
     if (!currentHash) {
       return NextResponse.json(
-        { success: false, error: 'Server configuration error' },
+        { success: false, error: 'Server configuration error: No password configured' },
         { status: 500 }
       );
     }
 
-    const isValid = await compare(currentPassword, currentHash);
+    // If using plain ADMIN_PASSWORD, compare directly; otherwise use hash comparison
+    const isValid = currentHash === currentPassword || await compare(currentPassword, currentHash);
     if (!isValid) {
       return NextResponse.json(
         { success: false, error: 'Current password is incorrect' },
