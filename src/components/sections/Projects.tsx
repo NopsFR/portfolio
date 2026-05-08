@@ -38,7 +38,7 @@ export function Projects() {
         </motion.div>
 
         {/* Projects Grid */}
-        <div className="grid sm:grid-cols-2 gap-4 md:gap-6">
+        <div className="grid sm:grid-cols-2 gap-6 lg:gap-8">
           {projects.map((project, index) => (
             <motion.div
               key={project.id}
@@ -49,7 +49,7 @@ export function Projects() {
             >
               <Card className="h-full flex flex-col overflow-hidden">
                 {/* Project Image */}
-                <div className="relative h-48 overflow-hidden rounded-t-xl">
+                <div className="relative h-52 overflow-hidden rounded-t-xl">
                   <img
                     src={project.image}
                     alt={project.title}
@@ -61,7 +61,7 @@ export function Projects() {
                 </div>
 
                 {/* Project Content */}
-                <div className="flex-1 p-4">
+                <div className="flex-1 p-5">
                   {/* Project Header */}
                   <div className="mb-4">
                     <h3 className="text-lg sm:text-xl font-semibold text-white mb-2">
@@ -73,7 +73,7 @@ export function Projects() {
                   </div>
 
                   {/* Tags */}
-                  <div className="flex flex-wrap gap-2 mb-6">
+                  <div className="flex flex-wrap gap-2 mb-5">
                     {project.tags.map((tag) => (
                       <Badge key={tag} variant="default" size="sm">
                         {tag}
