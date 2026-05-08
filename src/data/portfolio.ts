@@ -27,14 +27,7 @@ export const personalInfo = {
   name: "Oscar",
   title: "Cybersecurity Specialist & Full-Stack Developer",
   tagline: "I break things so they become stronger. Then I build them better.",
-  bio: `Hey, I'm Oscar. I spend my days knee-deep in code and my nights hunting vulnerabilities. 
-There's something addictive about finding that one flaw everyone else missed — that "aha!" 
-moment when the puzzle pieces click. I'm not your typical developer who just builds features. 
-I think like an attacker, code like an engineer, and explain like a teacher. Whether I'm 
-pen-testing a web app, automating security workflows, or building tools that help other 
-developers sleep better at night, I'm all in. When I'm not staring at terminal windows, 
-you'll probably find me grinding on TryHackMe rooms or contributing to open-source security 
-projects. Yeah, I know — I need to get out more.`,
+  bio: `Hey, I'm Oscar. I'm a full-stack developer who got obsessed with cybersecurity — now I do both. By day, I'm building web apps with React and Node.js. By night, I'm breaking into them (ethically, of course). I've spent countless hours on TryHackMe, grinding through rooms and learning how attackers think. That mindset changed everything for me. Now when I write code, I'm already thinking about how someone might exploit it. I've got my Security+ and CEH certifications under my belt, and I'm always working toward the next one. Whether I'm pen-testing a web app, automating security scans, or just deep in a CTF challenge, I love the puzzle of it all. I also write about what I learn — room writeups, tool reviews, whatever might help someone else on their journey. If you're into security or just want to talk tech, hit me up. Always down to connect with like-minded people.`,
   email: "Nopsrust@gmail.com",
   location: "Remote / Worldwide",
   // Hacker-themed profile image
