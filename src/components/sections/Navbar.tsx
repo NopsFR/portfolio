@@ -1,10 +1,10 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useScrollPosition } from '@/hooks/useScrollPosition';
 import { navigation } from '@/data/portfolio';
-import { FaBars, FaTimes } from 'react-icons/fa';
+import { FaBars, FaTimes, FaShieldAlt } from 'react-icons/fa';
 
 export function Navbar() {
   const { scrollPosition } = useScrollPosition();
@@ -43,27 +43,36 @@ export function Navbar() {
     };
   }, []);
 
-  const scrollToSection = (href: string) => {
+  const scrollToSection = useCallback((href: string) => {
     const element = document.querySelector(href);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
       setIsMobileMenuOpen(false);
     }
-  };
+  }, []);
+
+  const getButtonClasses = useCallback((link: { name: string; href: string }) => {
+    const isSecurityDemo = link.name === 'Security Demo';
+    const isActive = activeSection === link.href.replace('#', '');
+    
+    const baseClasses = 'px-3 md:px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center gap-1.5';
+    
+    if (isActive) {
+      return `${baseClasses} ${isSecurityDemo ? 'text-cyan-400 bg-cyan-500/10' : 'text-pink-400 bg-pink-500/10'}`;
+    }
+    
+    return `${baseClasses} ${isSecurityDemo ? 'text-cyan-400 hover:text-cyan-300 hover:bg-cyan-500/10' : 'text-gray-400 hover:text-white hover:bg-white/5'}`;
+  }, [activeSection]);
 
   return (
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? 'bg-[#0a0a0f]/80 backdrop-blur-xl border-b border-white/10 shadow-lg'
-          : 'bg-transparent'
-      }`}
+      className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0f]/95 backdrop-blur-xl border-b border-white/10 shadow-lg shadow-black/50"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 md:h-20">
+        <div className="flex items-center justify-between h-14 md:h-16">
           {/* Logo */}
           <motion.a
             href="#home"
@@ -75,10 +84,10 @@ export function Navbar() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-pink-500 to-purple-600 flex items-center justify-center font-bold text-white text-lg shadow-lg shadow-pink-500/25">
+            <div className="w-8 h-8 md:w-10 md:h-10 rounded-xl bg-gradient-to-br from-pink-500 to-purple-600 flex items-center justify-center font-bold text-white text-sm md:text-lg shadow-lg shadow-pink-500/25">
               O
             </div>
-            <span className="text-white font-semibold text-lg hidden sm:block group-hover:text-pink-400 transition-colors">
+            <span className="text-white font-semibold text-base md:text-lg hidden sm:block group-hover:text-pink-400 transition-colors">
               Oscar
             </span>
           </motion.a>
@@ -89,26 +98,23 @@ export function Navbar() {
               <motion.button
                 key={link.name}
                 onClick={() => scrollToSection(link.href)}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
-                  activeSection === link.href.replace('#', '')
-                    ? 'text-pink-400 bg-pink-500/10'
-                    : 'text-gray-400 hover:text-white hover:bg-white/5'
-                }`}
+                className={getButtonClasses(link)}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                {link.name}
+                {link.name === 'Security Demo' && <FaShieldAlt className="text-xs" />}
+                <span>{link.name}</span>
               </motion.button>
             ))}
           </div>
 
           {/* Mobile Menu Button */}
           <motion.button
-            className="md:hidden p-2 text-gray-400 hover:text-white"
+            className="md:hidden p-2 text-gray-400 hover:text-white transition-colors"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             whileTap={{ scale: 0.9 }}
           >
-            {isMobileMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+            {isMobileMenuOpen ? <FaTimes size={20} /> : <FaBars size={20} />}
           </motion.button>
         </div>
       </div>
@@ -121,22 +127,27 @@ export function Navbar() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden bg-[#0a0a0f]/95 backdrop-blur-xl border-b border-white/10"
+            className="md:hidden bg-[#0a0a0f]/95 backdrop-blur-xl border-t border-white/10"
           >
-            <div className="px-4 py-4 space-y-2">
+            <div className="px-4 py-4 space-y-1">
               {navigation.map((link, index) => (
                 <motion.button
                   key={link.name}
                   onClick={() => scrollToSection(link.href)}
-                  className={`block w-full text-left px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200 ${
+                  className={`block w-full text-left px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200 flex items-center gap-2 ${
                     activeSection === link.href.replace('#', '')
-                      ? 'text-pink-400 bg-pink-500/10'
-                      : 'text-gray-400 hover:text-white hover:bg-white/5'
+                      ? link.name === 'Security Demo'
+                        ? 'text-cyan-400 bg-cyan-500/10'
+                        : 'text-pink-400 bg-pink-500/10'
+                      : link.name === 'Security Demo'
+                        ? 'text-cyan-400 hover:text-cyan-300 hover:bg-cyan-500/10'
+                        : 'text-gray-400 hover:text-white hover:bg-white/5'
                   }`}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.05 }}
+                  transition={{ delay: index * 0.03 }}
                 >
+                  {link.name === 'Security Demo' && <FaShieldAlt className="text-sm" />}
                   {link.name}
                 </motion.button>
               ))}

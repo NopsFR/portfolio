@@ -48,6 +48,11 @@ const TryHackMe = dynamic(
   { ssr: false }
 );
 
+const SecurityDemo = dynamic(
+  () => import('@/components/sections').then((mod) => mod.SecurityDemo),
+  { ssr: false }
+);
+
 const ChatBot = dynamic(
   () => import('@/components/sections').then((mod) => mod.ChatBot),
   { ssr: false }
@@ -90,6 +95,9 @@ export default function Home() {
 
       {/* TryHackMe Section */}
       <TryHackMe />
+
+      {/* Security Demo Section */}
+      <SecurityDemo />
 
       {/* Contact Section */}
       <Contact />

@@ -212,6 +212,7 @@ export const navigation = [
   { name: "Projects", href: "#projects" },
   { name: "Journey", href: "#journey" },
   { name: "TryHackMe", href: "#tryhackme" },
+  { name: "Security Demo", href: "#security-demo" },
   { name: "Contact", href: "#contact" },
   { name: "Chat", href: "#chat" },
 ];

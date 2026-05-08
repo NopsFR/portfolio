@@ -5,6 +5,7 @@ export { Skills } from './Skills';
 export { Projects } from './Projects';
 export { Journey } from './Journey';
 export { TryHackMe } from './TryHackMe';
+export { SecurityDemo } from './SecurityDemo';
 export { ChatBot } from './ChatBot';
 export { Contact } from './Contact';
 export { Footer } from './Footer';
