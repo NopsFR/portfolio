@@ -1,0 +1,10 @@
+export { Navbar } from './Navbar';
+export { Hero } from './Hero';
+export { About } from './About';
+export { Skills } from './Skills';
+export { Projects } from './Projects';
+export { Journey } from './Journey';
+export { TryHackMe } from './TryHackMe';
+export { ChatBot } from './ChatBot';
+export { Contact } from './Contact';
+export { Footer } from './Footer';
