@@ -10,6 +10,7 @@ import {
   FaCode,
   FaCertificate,
   FaAward,
+  FaTerminal,
 } from 'react-icons/fa';
 
 const categoryIcons = {
@@ -18,7 +19,7 @@ const categoryIcons = {
 };
 
 const categoryColors = {
-  work: 'pink',
+  work: 'green',
   certification: 'cyan',
 } as const;
 
@@ -40,11 +41,11 @@ export function Journey() {
         >
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
             My{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-500">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-cyan-500">
               Journey
             </span>
           </h2>
-          <div className="w-20 sm:w-24 h-1 bg-gradient-to-r from-pink-500 to-purple-500 mx-auto rounded-full mb-6" />
+          <div className="w-20 sm:w-24 h-1 bg-gradient-to-r from-green-500 to-cyan-500 mx-auto rounded-full mb-6" />
           <p className="text-gray-400 max-w-2xl mx-auto text-base sm:text-lg">
             My continuous path of growth through cybersecurity, development, and
             certifications
@@ -54,7 +55,7 @@ export function Journey() {
         {/* Timeline */}
         <div className="relative">
           {/* Timeline line */}
-          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-pink-500 via-purple-500 to-cyan-500" />
+          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-green-500 via-cyan-500 to-emerald-500" />
 
           {/* Timeline items */}
           <div className="space-y-8">
@@ -77,8 +78,8 @@ export function Journey() {
                   {/* Timeline dot */}
                   <div
                     className={`absolute left-4 md:left-1/2 w-4 h-4 rounded-full -translate-x-1/2 z-10 ${
-                      color === 'pink'
-                        ? 'bg-pink-500 shadow-lg shadow-pink-500/50'
+                      color === 'green'
+                        ? 'bg-green-500 shadow-lg shadow-green-500/50'
                         : 'bg-cyan-500 shadow-lg shadow-cyan-500/50'
                     }`}
                   />
@@ -89,12 +90,12 @@ export function Journey() {
                       isLeft ? 'md:pr-12' : 'md:pl-12'
                     }`}
                   >
-                    <Card glow={color === 'pink' ? 'pink' : 'none'}>
+                    <Card glow={color === 'green' ? 'cyan' : 'none'}>
                       <div className="flex items-start gap-4">
                         <div
                           className={`flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center ${
-                            color === 'pink'
-                              ? 'bg-pink-500/20 text-pink-400'
+                            color === 'green'
+                              ? 'bg-green-500/20 text-green-400'
                               : 'bg-cyan-500/20 text-cyan-400'
                           }`}
                         >
@@ -103,15 +104,15 @@ export function Journey() {
                         <div className="flex-1">
                           <div className="flex items-center gap-2 mb-2 flex-wrap">
                             <span
-                              className={`text-sm font-medium ${
-                                color === 'pink'
-                                  ? 'text-pink-400'
+                              className={`text-sm font-medium font-mono ${
+                                color === 'green'
+                                  ? 'text-green-400'
                                   : 'text-cyan-400'
                               }`}
                             >
                               {item.period}
                             </span>
-                            <Badge variant={color} size="sm">
+                            <Badge variant={color as 'green' | 'cyan'} size="sm">
                               {item.type === 'work' ? 'Work' : 'Certification'}
                             </Badge>
                           </div>
@@ -144,7 +145,7 @@ export function Journey() {
         >
           <h3 className="text-2xl sm:text-3xl font-bold text-white text-center mb-8">
             Certifications &{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-purple-500">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-green-500">
               Achievements
             </span>
           </h3>

@@ -38,7 +38,7 @@ const chatBotResponses = [
   },
   {
     keywords: ['contact', 'email', 'reach', 'get in touch', 'linkedin', 'twitter'],
-    answer: `You can reach Oscar in several ways:\n• Email: ${personalInfo.email}\n• GitHub: ${personalInfo.social.github}\n• LinkedIn: ${personalInfo.social.linkedin}\n• Twitter: ${personalInfo.social.twitter}\n\nHe typically responds within 24-48 hours!`,
+    answer: `You can reach Oscar in several ways:\n• Email: ${personalInfo.email}\n• GitHub: ${personalInfo.social.github}\n• LinkedIn: ${personalInfo.social.linkedin}\n\nHe typically responds within 24-48 hours!`,
   },
   {
     keywords: ['certification', 'cert', 'security+', 'ceh'],

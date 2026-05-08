@@ -10,6 +10,7 @@ import {
   FaShieldAlt,
   FaCode,
   FaTools,
+  FaTerminal,
 } from 'react-icons/fa';
 
 // Filter skills by category
@@ -22,42 +23,45 @@ const skillCategories = [
     label: 'Cybersecurity',
     icon: FaShieldAlt,
     skills: getSkillsByCategory('security'),
-    color: 'pink',
+    color: 'green',
   },
   {
     id: 'languages',
     label: 'Languages & Frameworks',
     icon: FaCode,
     skills: [...getSkillsByCategory('languages'), ...getSkillsByCategory('frameworks')],
-    color: 'purple',
+    color: 'cyan',
   },
   {
     id: 'tools',
     label: 'Tools & Platforms',
-    icon: FaTools,
+    icon: FaTerminal,
     skills: getSkillsByCategory('tools'),
-    color: 'cyan',
+    color: 'emerald',
   },
 ];
 
 const colorMap = {
-  pink: {
-    bg: 'from-pink-500/20 to-pink-500/5',
-    border: 'border-pink-500/30',
-    text: 'text-pink-400',
-    badge: 'bg-pink-500/20 text-pink-300',
-  },
-  purple: {
-    bg: 'from-purple-500/20 to-purple-500/5',
-    border: 'border-purple-500/30',
-    text: 'text-purple-400',
-    badge: 'bg-purple-500/20 text-purple-300',
+  green: {
+    bg: 'from-green-500/20 to-green-500/5',
+    border: 'border-green-500/30',
+    text: 'text-green-400',
+    badge: 'bg-green-500/20 text-green-300',
+    gradient: 'from-green-500 to-cyan-500',
   },
   cyan: {
     bg: 'from-cyan-500/20 to-cyan-500/5',
     border: 'border-cyan-500/30',
     text: 'text-cyan-400',
     badge: 'bg-cyan-500/20 text-cyan-300',
+    gradient: 'from-cyan-500 to-emerald-500',
+  },
+  emerald: {
+    bg: 'from-emerald-500/20 to-emerald-500/5',
+    border: 'border-emerald-500/30',
+    text: 'text-emerald-400',
+    badge: 'bg-emerald-500/20 text-emerald-300',
+    gradient: 'from-emerald-500 to-green-500',
   },
 };
 
@@ -83,11 +87,11 @@ export function Skills() {
         >
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
             Skills &{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-500">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-cyan-500">
               Expertise
             </span>
           </h2>
-          <div className="w-20 sm:w-24 h-1 bg-gradient-to-r from-pink-500 to-purple-500 mx-auto rounded-full mb-6" />
+          <div className="w-20 sm:w-24 h-1 bg-gradient-to-r from-green-500 to-cyan-500 mx-auto rounded-full mb-6" />
           <p className="text-gray-400 max-w-2xl mx-auto text-base sm:text-lg px-4">
             A comprehensive overview of my technical abilities across
             cybersecurity, development, and tools
@@ -130,7 +134,7 @@ export function Skills() {
                     <h3 className="text-white font-medium text-sm sm:text-base">
                       {skill.name}
                     </h3>
-                    <Badge variant={currentCategory.color as 'pink' | 'purple' | 'cyan'} size="sm">
+                  <Badge variant={currentCategory.color as 'green' | 'cyan' | 'default'} size="sm">
                       {skill.level}%
                     </Badge>
                   </div>
@@ -180,7 +184,7 @@ export function Skills() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.3, delay: index * 0.03 }}
-                className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-white/5 border border-white/10 text-gray-400 text-xs sm:text-sm hover:text-white hover:border-pink-500/30 hover:bg-pink-500/10 transition-all duration-300 cursor-default"
+                className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-white/5 border border-white/10 text-gray-400 text-xs sm:text-sm hover:text-green-400 hover:border-green-500/30 hover:bg-green-500/10 transition-all duration-300 cursor-default font-mono"
               >
                 {tech}
               </motion.span>

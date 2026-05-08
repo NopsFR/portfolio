@@ -58,60 +58,60 @@ export function AnimatedBackground() {
       className="fixed inset-0 -z-10 overflow-hidden"
       onMouseMove={handleMouseMove}
     >
-      {/* Base dark background */}
-      <div className="absolute inset-0 bg-[#0a0a0f]" />
+      {/* Base dark background - Hacker terminal black */}
+      <div className="absolute inset-0 bg-[#0a0a0a]" />
 
-      {/* Animated gradient orbs - Pink Hacking Theme */}
+      {/* Animated gradient orbs - Hacker Green Theme */}
       <motion.div
         style={{ x: backgroundX, y: backgroundY }}
         className="absolute inset-0"
       >
-        {/* Large pink gradient - main */}
+        {/* Large green gradient - main (Matrix green) */}
         <div
-          className="absolute rounded-full blur-[120px] opacity-20"
+          className="absolute rounded-full blur-[120px] opacity-15"
           style={{
             width: '600px',
             height: '600px',
-            background: 'radial-gradient(circle, rgba(255, 45, 123, 0.4) 0%, transparent 70%)',
+            background: 'radial-gradient(circle, rgba(0, 255, 65, 0.4) 0%, transparent 70%)',
             top: '10%',
             left: '20%',
             animation: 'float 20s ease-in-out infinite',
           }}
         />
 
-        {/* Secondary pink gradient */}
+        {/* Secondary cyan gradient */}
         <div
-          className="absolute rounded-full blur-[120px] opacity-15"
+          className="absolute rounded-full blur-[120px] opacity-12"
           style={{
             width: '500px',
             height: '500px',
-            background: 'radial-gradient(circle, rgba(255, 77, 141, 0.4) 0%, transparent 70%)',
+            background: 'radial-gradient(circle, rgba(0, 255, 255, 0.4) 0%, transparent 70%)',
             top: '50%',
             right: '10%',
             animation: 'float 25s ease-in-out infinite reverse',
           }}
         />
 
-        {/* Cyan accent gradient - for contrast */}
+        {/* Emerald accent gradient */}
         <div
           className="absolute rounded-full blur-[120px] opacity-8"
           style={{
             width: '400px',
             height: '400px',
-            background: 'radial-gradient(circle, rgba(0, 240, 255, 0.4) 0%, transparent 70%)',
+            background: 'radial-gradient(circle, rgba(0, 255, 136, 0.4) 0%, transparent 70%)',
             bottom: '10%',
             left: '30%',
             animation: 'float 18s ease-in-out infinite',
           }}
         />
 
-        {/* Tertiary pink gradient */}
+        {/* Tertiary green gradient */}
         <div
-          className="absolute rounded-full blur-[100px] opacity-12"
+          className="absolute rounded-full blur-[100px] opacity-10"
           style={{
             width: '350px',
             height: '350px',
-            background: 'radial-gradient(circle, rgba(255, 107, 157, 0.4) 0%, transparent 70%)',
+            background: 'radial-gradient(circle, rgba(51, 255, 102, 0.4) 0%, transparent 70%)',
             top: '30%',
             right: '25%',
             animation: 'float 22s ease-in-out infinite',
@@ -119,7 +119,7 @@ export function AnimatedBackground() {
         />
       </motion.div>
 
-      {/* Floating particles - Pink Hacking Theme */}
+      {/* Floating particles - Hacker Green Theme */}
       {particles.map((particle) => (
         <motion.div
           key={particle.id}
@@ -131,10 +131,10 @@ export function AnimatedBackground() {
             height: particle.size,
             background: `radial-gradient(circle, ${
               particle.id % 3 === 0
-                ? 'rgba(255, 45, 123, 0.12)'
+                ? 'rgba(0, 255, 65, 0.12)'
                 : particle.id % 3 === 1
-                ? 'rgba(255, 77, 141, 0.1)'
-                : 'rgba(0, 240, 255, 0.06)'
+                ? 'rgba(0, 255, 136, 0.1)'
+                : 'rgba(0, 255, 255, 0.06)'
             } 0%, transparent 70%)`,
             filter: 'blur(40px)',
           }}
@@ -153,13 +153,13 @@ export function AnimatedBackground() {
         />
       ))}
 
-      {/* Grid pattern overlay */}
+      {/* Grid pattern overlay - Hacker green */}
       <div
         className="absolute inset-0 opacity-[0.03]"
         style={{
           backgroundImage: `
-            linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)
+            linear-gradient(rgba(0,255,65,0.1) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(0,255,65,0.1) 1px, transparent 1px)
           `,
           backgroundSize: '50px 50px',
         }}
@@ -176,7 +176,7 @@ export function AnimatedBackground() {
   );
 }
 
-// Mouse-following glow effect component
+// Mouse-following glow effect component - Hacker green
 export function MouseGlow() {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isVisible, setIsVisible] = useState(false);
@@ -217,7 +217,7 @@ export function MouseGlow() {
         style={{
           width: '400px',
           height: '400px',
-          background: 'radial-gradient(circle, rgba(255, 45, 123, 0.06) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(0, 255, 65, 0.06) 0%, transparent 70%)',
         }}
       />
     </div>

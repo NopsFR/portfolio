@@ -9,9 +9,10 @@ import { useMousePosition } from '@/hooks/useMousePosition';
 import {
   FaGithub,
   FaLinkedin,
-  FaTwitter,
   FaEnvelope,
   FaDownload,
+  FaTerminal,
+  FaUserSecret,
 } from 'react-icons/fa';
 import { FaHackerrank } from 'react-icons/fa6';
 
@@ -19,18 +20,17 @@ const iconMap = {
   FaGithub: FaGithub,
   FaHackerrank: FaHackerrank,
   FaLinkedin: FaLinkedin,
-  FaTwitter: FaTwitter,
   FaEnvelope: FaEnvelope,
 };
 
 export function Hero() {
   const mousePosition = useMousePosition();
-  // Typing animation texts
+  // Typing animation texts - hacker themed
   const typedTexts = [
-    "Cybersecurity Specialist",
-    "Full-Stack Developer",
-    "Bug Hunter",
-    "Problem Solver",
+    "> init cybersecurity_specialist.exe",
+    "> loading full_stack_dev.dll",
+    "> running bug_hunter.sh",
+    "> executing problem_solver.py",
   ];
   
   const [typedText, setTypedText] = useState('');
@@ -56,7 +56,7 @@ export function Hero() {
           }
         }
       },
-      isDeleting ? 50 : 100
+      isDeleting ? 30 : 80
     );
 
     return () => clearTimeout(timeout);
@@ -70,9 +70,9 @@ export function Hero() {
       id="home"
       className="relative min-h-screen flex items-center justify-center px-4 pt-20 overflow-hidden"
     >
-      {/* Background decorative elements */}
+      {/* Background decorative elements - Hacker green theme */}
       <motion.div
-        className="absolute top-10 sm:top-20 left-0 sm:left-10 w-48 h-48 sm:w-64 sm:h-64 rounded-full bg-pink-500/10 blur-3xl"
+        className="absolute top-10 sm:top-20 left-0 sm:left-10 w-48 h-48 sm:w-64 sm:h-64 rounded-full bg-green-500/10 blur-3xl"
         animate={{
           scale: [1, 1.2, 1],
           opacity: [0.3, 0.5, 0.3],
@@ -80,7 +80,7 @@ export function Hero() {
         transition={{ duration: 8, repeat: Infinity }}
       />
       <motion.div
-        className="absolute bottom-10 sm:bottom-20 right-0 sm:right-10 w-64 h-64 sm:w-96 sm:h-96 rounded-full bg-purple-500/10 blur-3xl"
+        className="absolute bottom-10 sm:bottom-20 right-0 sm:right-10 w-64 h-64 sm:w-96 sm:h-96 rounded-full bg-cyan-500/10 blur-3xl"
         animate={{
           scale: [1.2, 1, 1.2],
           opacity: [0.3, 0.5, 0.3],
@@ -88,35 +88,48 @@ export function Hero() {
         transition={{ duration: 10, repeat: Infinity }}
       />
 
-      {/* Animated grid background */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(236,72,153,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(236,72,153,0.03)_1px,transparent_1px)] bg-[size:64px_64px]" />
+      {/* Animated grid background - Hacker green */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,65,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,65,0.03)_1px,transparent_1px)] bg-[size:64px_64px]" />
+
+      {/* Matrix-style falling code background effect */}
+      <div className="absolute inset-0 overflow-hidden opacity-5">
+        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=1920&q=80')] bg-cover bg-center" />
+      </div>
 
       <Container className="relative z-10">
         <div className="text-center">
-          {/* Profile Image */}
+          {/* Profile Image - Now with actual image */}
           <motion.div
             className="relative mx-auto w-28 h-28 sm:w-32 sm:h-32 md:w-40 md:h-40 mb-8"
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <div className="absolute inset-0 rounded-full bg-gradient-to-br from-pink-500 via-purple-500 to-cyan-500 p-[3px]">
-              <div className="w-full h-full rounded-full bg-[#0a0a0f] flex items-center justify-center overflow-hidden">
-                <div className="w-full h-full rounded-full bg-gradient-to-br from-pink-500/20 to-purple-500/20 flex items-center justify-center">
-                  <span className="text-4xl sm:text-5xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-pink-400 to-purple-400">
-                    O
-                  </span>
-                </div>
+            <div className="absolute inset-0 rounded-full bg-gradient-to-br from-green-500 via-emerald-500 to-cyan-500 p-[3px]">
+              <div className="w-full h-full rounded-full bg-[#0a0a0a] flex items-center justify-center overflow-hidden">
+                <img
+                  src={personalInfo.avatar}
+                  alt={personalInfo.name}
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
             {/* Animated ring */}
             <motion.div
-              className="absolute inset-0 rounded-full border-2 border-pink-500/30"
+              className="absolute inset-0 rounded-full border-2 border-green-500/30"
               animate={{ rotate: 360 }}
               transition={{ duration: 10, repeat: Infinity, ease: 'linear' }}
             />
             {/* Glow effect */}
-            <div className="absolute inset-0 rounded-full bg-pink-500/20 blur-xl" />
+            <div className="absolute inset-0 rounded-full bg-green-500/20 blur-xl" />
+            {/* Hacker badge */}
+            <motion.div
+              className="absolute -bottom-2 -right-2 w-12 h-12 rounded-full bg-green-500/20 border border-green-500/40 flex items-center justify-center"
+              animate={{ scale: [1, 1.1, 1] }}
+              transition={{ duration: 2, repeat: Infinity }}
+            >
+              <FaUserSecret className="text-green-400" size={20} />
+            </motion.div>
           </motion.div>
 
           {/* Title */}
@@ -129,17 +142,17 @@ export function Hero() {
             {personalInfo.name}
           </motion.h1>
 
-          {/* Animated typing text */}
+          {/* Animated typing text - Terminal style */}
           <motion.div
-            className="h-10 sm:h-12 md:h-14 mb-6 flex items-center justify-center"
+            className="h-12 sm:h-14 md:h-16 mb-6 flex items-center justify-center font-mono text-sm sm:text-base md:text-lg"
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.4 }}
           >
-            <span className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-pink-400 font-medium">
+            <span className="text-green-400">
               {typedText}
             </span>
-            <span className="w-0.5 sm:w-1 h-6 sm:h-8 md:h-10 bg-pink-500 ml-1 animate-pulse" />
+            <span className="w-2.5 h-6 sm:h-8 md:h-10 bg-green-500 ml-1 animate-pulse" />
           </motion.div>
 
           {/* Description */}
@@ -205,7 +218,7 @@ export function Hero() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub"
-              className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-pink-400 hover:border-pink-500/50 hover:bg-pink-500/10 transition-all duration-300"
+              className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-green-400 hover:border-green-500/50 hover:bg-green-500/10 transition-all duration-300"
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.3, delay: 0.8 }}
@@ -219,7 +232,7 @@ export function Hero() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"
-              className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-pink-400 hover:border-pink-500/50 hover:bg-pink-500/10 transition-all duration-300"
+              className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-green-400 hover:border-green-500/50 hover:bg-green-500/10 transition-all duration-300"
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.3, delay: 0.9 }}
@@ -229,23 +242,9 @@ export function Hero() {
               <FaLinkedin size={18} />
             </motion.a>
             <motion.a
-              href={personalInfo.social.twitter}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Twitter"
-              className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-pink-400 hover:border-pink-500/50 hover:bg-pink-500/10 transition-all duration-300"
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.3, delay: 1.0 }}
-              whileHover={{ scale: 1.1, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <FaTwitter size={18} />
-            </motion.a>
-            <motion.a
               href={`mailto:${personalInfo.email}`}
               aria-label="Email"
-              className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-pink-400 hover:border-pink-500/50 hover:bg-pink-500/10 transition-all duration-300"
+              className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-green-400 hover:border-green-500/50 hover:bg-green-500/10 transition-all duration-300"
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.3, delay: 1.1 }}
@@ -264,11 +263,11 @@ export function Hero() {
             transition={{ delay: 1.2 }}
           >
             <motion.div
-              className="w-6 h-10 rounded-full border-2 border-white/20 flex items-start justify-center p-2"
+              className="w-6 h-10 rounded-full border-2 border-green-500/30 flex items-start justify-center p-2"
               animate={{ y: [0, 10, 0] }}
               transition={{ duration: 2, repeat: Infinity }}
             >
-              <div className="w-1.5 h-1.5 rounded-full bg-pink-500" />
+              <div className="w-1.5 h-1.5 rounded-full bg-green-500" />
             </motion.div>
           </motion.div>
         </div>

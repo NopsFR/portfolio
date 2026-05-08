@@ -11,7 +11,6 @@ import {
   FaEnvelope,
   FaGithub,
   FaLinkedin,
-  FaTwitter,
   FaPaperPlane,
   FaCheck,
 } from 'react-icons/fa';
@@ -226,28 +225,6 @@ export function Contact() {
                     <h4 className="text-white font-medium">LinkedIn</h4>
                     <p className="text-gray-400 text-sm truncate max-w-[200px]">
                       {personalInfo.social.linkedin.replace('https://', '')}
-                    </p>
-                  </div>
-                </motion.a>
-
-                <motion.a
-                  href={personalInfo.social.twitter}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:border-pink-500/30 hover:bg-pink-500/10 transition-all duration-300 group"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.3 }}
-                  whileHover={{ x: 5 }}
-                >
-                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-pink-500/20 to-purple-500/20 flex items-center justify-center group-hover:from-pink-500/30 group-hover:to-purple-500/30 transition-all">
-                    <FaTwitter className="text-pink-400" size={20} />
-                  </div>
-                  <div>
-                    <h4 className="text-white font-medium">Twitter</h4>
-                    <p className="text-gray-400 text-sm truncate max-w-[200px]">
-                      {personalInfo.social.twitter.replace('https://', '')}
                     </p>
                   </div>
                 </motion.a>

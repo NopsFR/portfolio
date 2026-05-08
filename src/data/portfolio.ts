@@ -35,12 +35,13 @@ pen-testing a web app, automating security workflows, or building tools that hel
 developers sleep better at night, I'm all in. When I'm not staring at terminal windows, 
 you'll probably find me grinding on TryHackMe rooms or contributing to open-source security 
 projects. Yeah, I know — I need to get out more.`,
-  email: "oscar@example.com",
+  email: "Nopsrust@gmail.com",
   location: "Remote / Worldwide",
+  // Hacker-themed profile image
+  avatar: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=400&q=80",
   social: {
-    github: "https://github.com/yourusername",
-    linkedin: "https://linkedin.com/in/yourusername",
-    twitter: "https://twitter.com/yourusername",
+    github: "https://github.com/NopsFR",
+    linkedin: "https://www.linkedin.com/in/oscar-senior-868b2a3a4/",
   },
 };
 
@@ -123,7 +124,7 @@ export const projects: Project[] = [
     id: 1,
     title: "THM Room Writeup Blog",
     description: "Technical writeups for 30+ TryHackMe rooms. Built with Next.js and Markdown for easy content management.",
-    image: "/projects/writeup-blog.jpg",
+    image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80",
     tags: ["Next.js", "Markdown", "TryHackMe", "Writeups"],
     link: "https://oscarwrites.tech",
     github: "https://github.com/yourusername/thm-writeups",
@@ -132,7 +133,7 @@ export const projects: Project[] = [
     id: 2,
     title: "Home Lab Dashboard",
     description: "Monitors Raspberry Pi cluster running vulnerable VMs. Features real-time status, resource tracking, and quick access to security tools.",
-    image: "/projects/home-lab.jpg",
+    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80",
     tags: ["Python", "Flask", "Docker", "Home Lab", "TryHackMe"],
     github: "https://github.com/yourusername/home-lab-dashboard",
   },
@@ -140,7 +141,7 @@ export const projects: Project[] = [
     id: 3,
     title: "CTF Note Organizer",
     description: "Personal wiki for CTF and penetration testing notes. Includes tagging, full-text search, and categorized exploit documentation.",
-    image: "/projects/ctf-notes.jpg",
+    image: "https://images.unsplash.com/photo-1516110833967-0b5716ca1387?w=800&q=80",
     tags: ["React", "Node.js", "SQLite", "TryHackMe", "Notes"],
     github: "https://github.com/yourusername/ctf-notes",
   },
@@ -148,7 +149,7 @@ export const projects: Project[] = [
     id: 4,
     title: "Password Strength Checker",
     description: "Browser-based password security analyzer. Tests against brute force, dictionary attacks, and common password lists without sending data to servers.",
-    image: "/projects/password-checker.jpg",
+    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&q=80",
     tags: ["JavaScript", "Cryptography", "TryHackMe", "Security"],
     link: "https://passwordcheck.oscarwrites.tech",
     github: "https://github.com/yourusername/password-strength-checker",
@@ -192,3 +193,12 @@ export const navigation = [
   { name: "Contact", href: "#contact" },
   { name: "Chat", href: "#chat" },
 ];
+
+// Hacker-themed background images for sections
+export const sectionImages = {
+  hero: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=1920&q=80",
+  about: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80",
+  skills: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&q=80",
+  projects: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80",
+  journey: "https://images.unsplash.com/photo-1516110833967-0b5716ca1387?w=800&q=80",
+};

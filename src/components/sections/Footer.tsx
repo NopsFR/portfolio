@@ -6,7 +6,6 @@ import { personalInfo } from '@/data/portfolio';
 import {
   FaGithub,
   FaLinkedin,
-  FaTwitter,
   FaEnvelope,
 } from 'react-icons/fa';
 
@@ -48,17 +47,6 @@ export function Footer() {
               whileTap={{ scale: 0.95 }}
             >
               <FaLinkedin size={18} />
-            </motion.a>
-            <motion.a
-              href={personalInfo.social.twitter}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Twitter"
-              className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-pink-400 hover:border-pink-500/50 hover:bg-pink-500/10 transition-all duration-300"
-              whileHover={{ scale: 1.1, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <FaTwitter size={18} />
             </motion.a>
             <motion.a
               href={`mailto:${personalInfo.email}`}
