@@ -35,11 +35,11 @@ export function About() {
         >
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
             About{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-500">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-cyan-500">
               Me
             </span>
           </h2>
-          <div className="w-20 sm:w-24 h-1 bg-gradient-to-r from-pink-500 to-purple-500 mx-auto rounded-full mb-6" />
+          <div className="w-20 sm:w-24 h-1 bg-gradient-to-r from-green-500 to-cyan-500 mx-auto rounded-full mb-6" />
           <p className="text-gray-400 max-w-2xl mx-auto text-base sm:text-lg">
             Passionate about building secure, scalable, and beautiful digital experiences
           </p>
@@ -57,34 +57,34 @@ export function About() {
           >
             <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96">
               {/* Decorative elements */}
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-pink-500/20 via-purple-500/20 to-cyan-500/20 blur-2xl" />
-              <div className="relative w-full h-full rounded-2xl bg-gradient-to-br from-pink-500 via-purple-500 to-cyan-500 p-[2px]">
-                <div className="w-full h-full rounded-2xl bg-[#0a0a0f] flex items-center justify-center overflow-hidden">
-                  <div className="text-center p-8">
-                    <span className="text-6xl sm:text-8xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-pink-400 via-purple-400 to-cyan-400">
-                      O
-                    </span>
-                    <p className="text-gray-400 mt-4 text-sm sm:text-base">
-                      {personalInfo.title}
-                    </p>
-                  </div>
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-green-500/20 via-cyan-500/20 to-emerald-500/20 blur-2xl" />
+              <div className="relative w-full h-full rounded-2xl bg-gradient-to-br from-green-500 via-cyan-500 to-emerald-500 p-[2px]">
+                <div className="w-full h-full rounded-2xl bg-[#0a0a0a] overflow-hidden">
+                  <img
+                    src={personalInfo.avatar}
+                    alt={personalInfo.name}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
               </div>
               {/* Floating badges */}
               <motion.div
-                className="absolute -top-4 -right-4 px-4 py-2 rounded-lg bg-pink-500/20 border border-pink-500/30 text-pink-400 text-sm font-medium"
+                className="absolute -top-4 -right-4 px-4 py-2 rounded-lg bg-green-500/20 border border-green-500/30 text-green-400 text-sm font-medium font-mono"
                 animate={{ y: [0, -10, 0] }}
                 transition={{ duration: 3, repeat: Infinity }}
               >
-                24/7 Learning
+                24/7_Learning
               </motion.div>
               <motion.div
-                className="absolute -bottom-4 -left-4 px-4 py-2 rounded-lg bg-purple-500/20 border border-purple-500/30 text-purple-400 text-sm font-medium"
+                className="absolute -bottom-4 -left-4 px-4 py-2 rounded-lg bg-cyan-500/20 border border-cyan-500/30 text-cyan-400 text-sm font-medium font-mono"
                 animate={{ y: [0, 10, 0] }}
                 transition={{ duration: 4, repeat: Infinity }}
               >
-                Security First
+                #Security_First
               </motion.div>
+              {/* Terminal-style corner decorations */}
+              <div className="absolute -top-2 -left-2 w-8 h-8 border-t-2 border-l-2 border-green-500/50 rounded-tl-lg" />
+              <div className="absolute -bottom-2 -right-2 w-8 h-8 border-b-2 border-r-2 border-cyan-500/50 rounded-br-lg" />
             </div>
           </motion.div>
 
@@ -116,8 +116,8 @@ export function About() {
                 >
                   <Card hover={false} className="p-4">
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-pink-500/20 to-purple-500/20 flex items-center justify-center">
-                        <highlight.icon className="text-pink-400" size={18} />
+                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-green-500/20 to-cyan-500/20 flex items-center justify-center">
+                        <highlight.icon className="text-green-400" size={18} />
                       </div>
                       <div className="min-w-0">
                         <p className="text-white font-medium text-sm truncate">
