@@ -122,11 +122,7 @@ export const projects: Project[] = [
   {
     id: 1,
     title: "THM Room Writeup Blog",
-    description: `A simple blog where I post writeups for TryHackMe rooms I've completed. 
-Started it because I kept forgetting what I learned from each room. It's just Markdown 
-files rendered with Next.js — nothing fancy, but it helps me remember the techniques 
-and maybe helps others who are stuck on the same rooms. Currently has writeups for 
-about 30 rooms including Vulnversity, Blue, and the OWASP Top 10 series.`,
+    description: "Technical writeups for 30+ TryHackMe rooms. Built with Next.js and Markdown for easy content management.",
     image: "/projects/writeup-blog.jpg",
     tags: ["Next.js", "Markdown", "TryHackMe", "Writeups"],
     link: "https://oscarwrites.tech",
@@ -135,10 +131,7 @@ about 30 rooms including Vulnversity, Blue, and the OWASP Top 10 series.`,
   {
     id: 2,
     title: "Home Lab Dashboard",
-    description: `A dashboard I built to monitor my home lab setup — you know, the one with 
-a Raspberry Pi cluster running vulnerable VMs for practice. Shows which machines are up, 
-CPU usage, and has quick links to my most-used tools. It's not pretty but it works, and 
-I added basic auth so my roommate can't turn off my Metasploitable instance again.`,
+    description: "Monitors Raspberry Pi cluster running vulnerable VMs. Features real-time status, resource tracking, and quick access to security tools.",
     image: "/projects/home-lab.jpg",
     tags: ["Python", "Flask", "Docker", "Home Lab", "TryHackMe"],
     github: "https://github.com/yourusername/home-lab-dashboard",
@@ -146,11 +139,7 @@ I added basic auth so my roommate can't turn off my Metasploitable instance agai
   {
     id: 3,
     title: "CTF Note Organizer",
-    description: `A messy but functional tool for organizing my CTF notes and TryHackMe 
-room findings. I was drowning in random text files and screenshots, so I built this 
-to keep everything in one place. Has tagging, search, and a simple web interface. 
-It's basically a personal wiki for all the cool stuff I've learned — from buffer 
-overflows to web exploitation techniques.`,
+    description: "Personal wiki for CTF and penetration testing notes. Includes tagging, full-text search, and categorized exploit documentation.",
     image: "/projects/ctf-notes.jpg",
     tags: ["React", "Node.js", "SQLite", "TryHackMe", "Notes"],
     github: "https://github.com/yourusername/ctf-notes",
@@ -158,11 +147,7 @@ overflows to web exploitation techniques.`,
   {
     id: 4,
     title: "Password Strength Checker",
-    description: `A tiny web app I made after doing the TryHackMe cryptography rooms. 
-You type in a password and it tells you how long it would take to crack using different 
-methods (brute force, dictionary attack, etc.). Also checks against common password 
-lists. It runs entirely in the browser so your passwords never leave your machine — 
-learned that lesson from THM's security best practices.`,
+    description: "Browser-based password security analyzer. Tests against brute force, dictionary attacks, and common password lists without sending data to servers.",
     image: "/projects/password-checker.jpg",
     tags: ["JavaScript", "Cryptography", "TryHackMe", "Security"],
     link: "https://passwordcheck.oscarwrites.tech",
