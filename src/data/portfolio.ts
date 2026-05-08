@@ -117,7 +117,7 @@ export const projects: Project[] = [
     id: 1,
     title: "OWASP Top 10 Lab",
     description: "Interactive web application showcasing solutions for all OWASP Top 10 vulnerabilities. Built as a learning tool for secure coding practices.",
-    image: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
     tags: ["React", "Node.js", "OWASP", "Security", "TryHackMe"],
     link: "https://owasplab.oscarwrites.tech",
     github: "https://github.com/NopsFR/owasp-top10-lab",
