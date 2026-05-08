@@ -1,5 +1,8 @@
 import { NextResponse } from 'next/server';
-import { githubConfig } from '@/data/portfolio';
+
+// GitHub username from personalInfo
+const GITHUB_USERNAME = 'NopsFR';
+const GITHUB_BASE_URL = 'https://api.github.com';
 
 // Cache for GitHub data
 let cachedData: { repos: unknown[]; user: unknown; timestamp: number } | null = null;
@@ -18,9 +21,9 @@ export async function GET() {
 
     // Fetch from GitHub API
     const [userResponse, reposResponse] = await Promise.all([
-      fetch(`${githubConfig.baseUrl}/users/${githubConfig.username}`),
+      fetch(`${GITHUB_BASE_URL}/users/${GITHUB_USERNAME}`),
       fetch(
-        `${githubConfig.baseUrl}/users/${githubConfig.username}/repos?sort=updated&per_page=10`
+        `${GITHUB_BASE_URL}/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=10`
       ),
     ]);
 
@@ -59,7 +62,7 @@ export async function GET() {
         success: false,
         error: 'Failed to fetch GitHub data',
         fallback: {
-          profileUrl: `https://github.com/${githubConfig.username}`,
+          profileUrl: `https://github.com/${GITHUB_USERNAME}`,
         },
       },
       { status: 500 }

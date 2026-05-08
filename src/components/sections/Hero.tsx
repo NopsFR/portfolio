@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/Button';
 import { Container } from '@/components/layout/Container';
-import { heroData, socialLinks } from '@/data/portfolio';
+import { personalInfo } from '@/data/portfolio';
 import { useMousePosition } from '@/hooks/useMousePosition';
 import {
   FaGithub,
@@ -25,12 +25,20 @@ const iconMap = {
 
 export function Hero() {
   const mousePosition = useMousePosition();
+  // Typing animation texts
+  const typedTexts = [
+    "Cybersecurity Specialist",
+    "Full-Stack Developer",
+    "Bug Hunter",
+    "Problem Solver",
+  ];
+  
   const [typedText, setTypedText] = useState('');
   const [textIndex, setTextIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
-    const currentText = heroData.typedTexts[textIndex];
+    const currentText = typedTexts[textIndex];
     const timeout = setTimeout(
       () => {
         if (!isDeleting) {
@@ -44,7 +52,7 @@ export function Hero() {
             setTypedText(typedText.slice(0, -1));
           } else {
             setIsDeleting(false);
-            setTextIndex((prev) => (prev + 1) % heroData.typedTexts.length);
+            setTextIndex((prev) => (prev + 1) % typedTexts.length);
           }
         }
       },
@@ -118,7 +126,7 @@ export function Hero() {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.3 }}
           >
-            {heroData.title}
+            {personalInfo.name}
           </motion.h1>
 
           {/* Animated typing text */}
@@ -141,7 +149,7 @@ export function Hero() {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.5 }}
           >
-            {heroData.description}
+            {personalInfo.tagline}
           </motion.p>
 
           {/* CTA Buttons */}
@@ -178,7 +186,7 @@ export function Hero() {
             <Button
               variant="outline"
               size="lg"
-              onClick={() => window.open(heroData.resumeUrl, '_blank')}
+              onClick={() => window.open('/resume.pdf', '_blank')}
               leftIcon={<FaDownload />}
             >
               Download Resume
@@ -192,28 +200,60 @@ export function Hero() {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.7 }}
           >
-            {socialLinks.map((link, index) => {
-              const IconComponent = iconMap[link.icon as keyof typeof iconMap];
-              if (!IconComponent) return null;
-
-              return (
-                <motion.a
-                  key={link.platform}
-                  href={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={link.label}
-                  className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-pink-400 hover:border-pink-500/50 hover:bg-pink-500/10 transition-all duration-300"
-                  initial={{ y: 20, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ duration: 0.3, delay: 0.8 + index * 0.1 }}
-                  whileHover={{ scale: 1.1, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <IconComponent size={18} />
-                </motion.a>
-              );
-            })}
+            <motion.a
+              href={personalInfo.social.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
+              className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-pink-400 hover:border-pink-500/50 hover:bg-pink-500/10 transition-all duration-300"
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.3, delay: 0.8 }}
+              whileHover={{ scale: 1.1, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <FaGithub size={18} />
+            </motion.a>
+            <motion.a
+              href={personalInfo.social.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-pink-400 hover:border-pink-500/50 hover:bg-pink-500/10 transition-all duration-300"
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.3, delay: 0.9 }}
+              whileHover={{ scale: 1.1, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <FaLinkedin size={18} />
+            </motion.a>
+            <motion.a
+              href={personalInfo.social.twitter}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Twitter"
+              className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-pink-400 hover:border-pink-500/50 hover:bg-pink-500/10 transition-all duration-300"
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.3, delay: 1.0 }}
+              whileHover={{ scale: 1.1, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <FaTwitter size={18} />
+            </motion.a>
+            <motion.a
+              href={`mailto:${personalInfo.email}`}
+              aria-label="Email"
+              className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-pink-400 hover:border-pink-500/50 hover:bg-pink-500/10 transition-all duration-300"
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.3, delay: 1.1 }}
+              whileHover={{ scale: 1.1, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <FaEnvelope size={18} />
+            </motion.a>
           </motion.div>
 
           {/* Scroll indicator */}

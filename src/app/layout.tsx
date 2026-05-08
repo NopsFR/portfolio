@@ -1,25 +1,24 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
-import { siteMetadata } from '@/data/portfolio';
 
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: siteMetadata.title,
-  description: siteMetadata.description,
-  keywords: siteMetadata.keywords,
-  authors: [{ name: siteMetadata.author }],
+  title: 'Oscar | Cybersecurity Specialist & Full-Stack Developer',
+  description: 'Portfolio of Oscar - a Cybersecurity Specialist and Full-Stack Developer who breaks things to make them stronger, then builds them better.',
+  keywords: ['cybersecurity', 'full-stack developer', 'penetration testing', 'web development', 'portfolio', 'ethical hacking'],
+  authors: [{ name: 'Oscar' }],
   openGraph: {
-    title: siteMetadata.title,
-    description: siteMetadata.description,
+    title: 'Oscar | Cybersecurity Specialist & Full-Stack Developer',
+    description: 'Portfolio of Oscar - a Cybersecurity Specialist and Full-Stack Developer.',
     type: 'website',
     locale: 'en_US',
   },
   twitter: {
     card: 'summary_large_image',
-    title: siteMetadata.title,
-    description: siteMetadata.description,
+    title: 'Oscar | Cybersecurity Specialist & Full-Stack Developer',
+    description: 'Portfolio of Oscar - a Cybersecurity Specialist and Full-Stack Developer.',
   },
   robots: {
     index: true,

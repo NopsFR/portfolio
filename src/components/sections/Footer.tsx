@@ -2,22 +2,13 @@
 
 import { motion } from 'framer-motion';
 import { Container } from '@/components/layout/Container';
-import { socialLinks } from '@/data/portfolio';
+import { personalInfo } from '@/data/portfolio';
 import {
   FaGithub,
   FaLinkedin,
   FaTwitter,
   FaEnvelope,
 } from 'react-icons/fa';
-import { FaHackerrank } from 'react-icons/fa6';
-
-const iconMap = {
-  FaGithub: FaGithub,
-  FaHackerrank: FaHackerrank,
-  FaLinkedin: FaLinkedin,
-  FaTwitter: FaTwitter,
-  FaEnvelope: FaEnvelope,
-};
 
 const currentYear = new Date().getFullYear();
 
@@ -36,25 +27,48 @@ export function Footer() {
 
           {/* Social Links */}
           <div className="flex items-center gap-4 mb-8">
-            {socialLinks.map((link) => {
-              const IconComponent = iconMap[link.icon as keyof typeof iconMap];
-              if (!IconComponent) return null;
-
-              return (
-                <motion.a
-                  key={link.platform}
-                  href={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={link.label}
-                  className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-pink-400 hover:border-pink-500/50 hover:bg-pink-500/10 transition-all duration-300"
-                  whileHover={{ scale: 1.1, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <IconComponent size={18} />
-                </motion.a>
-              );
-            })}
+            <motion.a
+              href={personalInfo.social.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
+              className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-pink-400 hover:border-pink-500/50 hover:bg-pink-500/10 transition-all duration-300"
+              whileHover={{ scale: 1.1, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <FaGithub size={18} />
+            </motion.a>
+            <motion.a
+              href={personalInfo.social.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-pink-400 hover:border-pink-500/50 hover:bg-pink-500/10 transition-all duration-300"
+              whileHover={{ scale: 1.1, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <FaLinkedin size={18} />
+            </motion.a>
+            <motion.a
+              href={personalInfo.social.twitter}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Twitter"
+              className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-pink-400 hover:border-pink-500/50 hover:bg-pink-500/10 transition-all duration-300"
+              whileHover={{ scale: 1.1, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <FaTwitter size={18} />
+            </motion.a>
+            <motion.a
+              href={`mailto:${personalInfo.email}`}
+              aria-label="Email"
+              className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-pink-400 hover:border-pink-500/50 hover:bg-pink-500/10 transition-all duration-300"
+              whileHover={{ scale: 1.1, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <FaEnvelope size={18} />
+            </motion.a>
           </div>
 
           {/* Navigation Links */}

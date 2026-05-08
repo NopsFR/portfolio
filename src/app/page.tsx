@@ -65,7 +65,7 @@ const Footer = dynamic(
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen">
+    <main className="relative min-h-screen w-full flex flex-col items-center">
       {/* Background Effects */}
       <AnimatedBackground />
       <MouseGlow />

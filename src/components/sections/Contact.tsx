@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { Container } from '@/components/layout/Container';
 import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
-import { socialLinks } from '@/data/portfolio';
+import { personalInfo } from '@/data/portfolio';
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
 import {
   FaEnvelope,
@@ -15,15 +15,6 @@ import {
   FaPaperPlane,
   FaCheck,
 } from 'react-icons/fa';
-import { FaHackerrank } from 'react-icons/fa6';
-
-const iconMap = {
-  FaGithub: FaGithub,
-  FaHackerrank: FaHackerrank,
-  FaLinkedin: FaLinkedin,
-  FaTwitter: FaTwitter,
-  FaEnvelope: FaEnvelope,
-};
 
 export function Contact() {
   const { ref, isIntersecting } = useIntersectionObserver<HTMLDivElement>({
@@ -195,35 +186,91 @@ export function Contact() {
               </h3>
 
               <div className="space-y-4">
-                {socialLinks.map((link, index) => {
-                  const IconComponent = iconMap[link.icon as keyof typeof iconMap];
-                  if (!IconComponent) return null;
+                <motion.a
+                  href={personalInfo.social.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:border-pink-500/30 hover:bg-pink-500/10 transition-all duration-300 group"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.1 }}
+                  whileHover={{ x: 5 }}
+                >
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-pink-500/20 to-purple-500/20 flex items-center justify-center group-hover:from-pink-500/30 group-hover:to-purple-500/30 transition-all">
+                    <FaGithub className="text-pink-400" size={20} />
+                  </div>
+                  <div>
+                    <h4 className="text-white font-medium">GitHub</h4>
+                    <p className="text-gray-400 text-sm truncate max-w-[200px]">
+                      {personalInfo.social.github.replace('https://', '')}
+                    </p>
+                  </div>
+                </motion.a>
 
-                  return (
-                    <motion.a
-                      key={link.platform}
-                      href={link.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:border-pink-500/30 hover:bg-pink-500/10 transition-all duration-300 group"
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: index * 0.1 }}
-                      whileHover={{ x: 5 }}
-                    >
-                      <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-pink-500/20 to-purple-500/20 flex items-center justify-center group-hover:from-pink-500/30 group-hover:to-purple-500/30 transition-all">
-                        <IconComponent className="text-pink-400" size={20} />
-                      </div>
-                      <div>
-                        <h4 className="text-white font-medium">{link.platform}</h4>
-                        <p className="text-gray-400 text-sm truncate max-w-[200px]">
-                          {link.url.replace('https://', '')}
-                        </p>
-                      </div>
-                    </motion.a>
-                  );
-                })}
+                <motion.a
+                  href={personalInfo.social.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:border-pink-500/30 hover:bg-pink-500/10 transition-all duration-300 group"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.2 }}
+                  whileHover={{ x: 5 }}
+                >
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-pink-500/20 to-purple-500/20 flex items-center justify-center group-hover:from-pink-500/30 group-hover:to-purple-500/30 transition-all">
+                    <FaLinkedin className="text-pink-400" size={20} />
+                  </div>
+                  <div>
+                    <h4 className="text-white font-medium">LinkedIn</h4>
+                    <p className="text-gray-400 text-sm truncate max-w-[200px]">
+                      {personalInfo.social.linkedin.replace('https://', '')}
+                    </p>
+                  </div>
+                </motion.a>
+
+                <motion.a
+                  href={personalInfo.social.twitter}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:border-pink-500/30 hover:bg-pink-500/10 transition-all duration-300 group"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.3 }}
+                  whileHover={{ x: 5 }}
+                >
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-pink-500/20 to-purple-500/20 flex items-center justify-center group-hover:from-pink-500/30 group-hover:to-purple-500/30 transition-all">
+                    <FaTwitter className="text-pink-400" size={20} />
+                  </div>
+                  <div>
+                    <h4 className="text-white font-medium">Twitter</h4>
+                    <p className="text-gray-400 text-sm truncate max-w-[200px]">
+                      {personalInfo.social.twitter.replace('https://', '')}
+                    </p>
+                  </div>
+                </motion.a>
+
+                <motion.a
+                  href={`mailto:${personalInfo.email}`}
+                  className="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:border-pink-500/30 hover:bg-pink-500/10 transition-all duration-300 group"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.4 }}
+                  whileHover={{ x: 5 }}
+                >
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-pink-500/20 to-purple-500/20 flex items-center justify-center group-hover:from-pink-500/30 group-hover:to-purple-500/30 transition-all">
+                    <FaEnvelope className="text-pink-400" size={20} />
+                  </div>
+                  <div>
+                    <h4 className="text-white font-medium">Email</h4>
+                    <p className="text-gray-400 text-sm truncate max-w-[200px]">
+                      {personalInfo.email}
+                    </p>
+                  </div>
+                </motion.a>
               </div>
             </Card>
 
@@ -233,10 +280,10 @@ export function Contact() {
                 Prefer Email?
               </h3>
               <a
-                href="mailto:Nopsrust@gmail.com"
+                href={`mailto:${personalInfo.email}`}
                 className="text-pink-400 hover:text-pink-300 transition-colors break-all"
               >
-                Nopsrust@gmail.com
+                {personalInfo.email}
               </a>
               <p className="text-gray-400 text-sm mt-4">
                 I typically respond within 24-48 hours. For urgent matters, feel

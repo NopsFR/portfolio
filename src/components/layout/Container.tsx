@@ -19,7 +19,7 @@ const containerMaxWidths = {
 
 export function Container({ children, className = '', size = 'xl' }: ContainerProps) {
   return (
-    <div className={`mx-auto px-4 sm:px-6 lg:px-8 ${containerMaxWidths[size]} ${className}`}>
+    <div className={`w-full mx-auto px-4 sm:px-6 lg:px-8 ${containerMaxWidths[size]} ${className}`}>
       {children}
     </div>
   );

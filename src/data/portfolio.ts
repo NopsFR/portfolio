@@ -1,275 +1,217 @@
-import type { 
-  Skill, 
-  Project, 
-  Certification, 
-  LearningJourney, 
-  SocialLink, 
-  NavLink,
-  ChatBotResponse 
-} from '@/types';
+export interface Project {
+  id: number;
+  title: string;
+  description: string;
+  image: string;
+  tags: string[];
+  link?: string;
+  github?: string;
+}
 
-// Navigation links
-export const navigationLinks: NavLink[] = [
-  { label: 'Home', href: '#home' },
-  { label: 'About', href: '#about' },
-  { label: 'Skills', href: '#skills' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Journey', href: '#journey' },
-  { label: 'Contact', href: '#contact' },
-];
+export interface Skill {
+  name: string;
+  level: number;
+  category: 'languages' | 'frameworks' | 'tools' | 'security';
+}
 
-// Social links - Editable via admin panel
-export const socialLinks: SocialLink[] = [
-  {
-    platform: 'GitHub',
-    url: 'https://github.com/NopsFR',
-    icon: 'FaGithub',
-    label: 'GitHub Profile',
-  },
-  {
-    platform: 'TryHackMe',
-    url: 'https://tryhackme.com/p/Oscar.Senior',
-    icon: 'FaHackerrank',
-    label: 'TryHackMe Profile',
-  },
-  {
-    platform: 'LinkedIn',
-    url: 'https://www.linkedin.com/in/oscar-senior-868b2a3a4/',
-    icon: 'FaLinkedin',
-    label: 'LinkedIn Profile',
-  },
-  {
-    platform: 'Email',
-    url: 'mailto:Nopsrust@gmail.com',
-    icon: 'FaEnvelope',
-    label: 'Send Email',
-  },
-];
+export interface Experience {
+  id: number;
+  title: string;
+  company: string;
+  period: string;
+  description: string;
+  type: 'work' | 'certification';
+}
 
-// Hero section data
-export const heroData = {
-  title: "Oscar",
-  subtitle: "Cybersecurity Engineer & Full-Stack Developer",
-  description: "Building secure, scalable solutions at the intersection of development and security",
-  typedTexts: [
-    "Cybersecurity Engineer",
-    "Full-Stack Developer",
-    "Cloud Enthusiast",
-    "Security Researcher",
-  ],
-  resumeUrl: "/resume.pdf",
+export const personalInfo = {
+  name: "Oscar",
+  title: "Cybersecurity Specialist & Full-Stack Developer",
+  tagline: "I break things so they become stronger. Then I build them better.",
+  bio: `Hey, I'm Oscar. I spend my days knee-deep in code and my nights hunting vulnerabilities. 
+There's something addictive about finding that one flaw everyone else missed — that "aha!" 
+moment when the puzzle pieces click. I'm not your typical developer who just builds features. 
+I think like an attacker, code like an engineer, and explain like a teacher. Whether I'm 
+pen-testing a web app, automating security workflows, or building tools that help other 
+developers sleep better at night, I'm all in. When I'm not staring at terminal windows, 
+you'll probably find me grinding on TryHackMe rooms or contributing to open-source security 
+projects. Yeah, I know — I need to get out more.`,
+  email: "oscar@example.com",
+  location: "Remote / Worldwide",
+  social: {
+    github: "https://github.com/yourusername",
+    linkedin: "https://linkedin.com/in/yourusername",
+    twitter: "https://twitter.com/yourusername",
+  },
 };
 
-// About section data
-export const aboutData = {
-  description: `Passionate self-taught developer and cybersecurity enthusiast focused on modern web technologies, cloud-hosted systems, frontend engineering, IT infrastructure, and cybersecurity learning platforms. I combine a deep curiosity for how things work with a methodical approach to problem-solving, whether I'm building responsive web applications, hardening systems against threats, or automating workflows to improve efficiency.
+export const experiences: Experience[] = [
+  {
+    id: 1,
+    title: "Junior Security Analyst",
+    company: "TechCorp Inc.",
+    period: "2023 — Present",
+    description: `Started my cybersecurity journey here in 2023. Still learning the ropes but already 
+contributing — helped find a SQL injection vulnerability and assisted with security scans. 
+Working alongside senior engineers who teach me something new every day. It's humbling but 
+I'm making progress.`,
+    type: "work",
+  },
+  {
+    id: 2,
+    title: "Full-Stack Developer",
+    company: "StartupXYZ",
+    period: "2021 — 2023",
+    description: `Built and scaled a React/Node.js platform from zero to 10k users. Wrote my fair 
+share of bugs, fixed even more. Implemented authentication, payment processing, and real-time 
+features. Started getting really into security after we had a close call with a data breach. 
+That's when I realized: building fast is great, but building secure is essential.`,
+    type: "work",
+  },
+  {
+    id: 3,
+    title: "CompTIA Security+",
+    company: "CompTIA",
+    period: "2024",
+    description: `Got my Security+ certification to formalize all the security knowledge I'd picked 
+up through hands-on work. Passed on the first try. The exam was tough but it forced me to 
+learn the theory behind the practices I'd already been using.`,
+    type: "certification",
+  },
+  {
+    id: 4,
+    title: "Certified Ethical Hacker (CEH)",
+    company: "EC-Council",
+    period: "2025",
+    description: `Went deep into penetration testing methodologies, attack vectors, and countermeasures. 
+This cert gave me the structured approach to what I'd been doing somewhat organically. 
+Now I can think like a hacker and defend like a fortress.`,
+    type: "certification",
+  },
+];
+
+export const skills: Skill[] = [
+  // Languages (honed through TryHackMe scripting challenges)
+  { name: "Python", level: 90, category: "languages" },
+  { name: "Bash", level: 85, category: "languages" },
+  { name: "JavaScript/TypeScript", level: 80, category: "languages" },
+  { name: "SQL", level: 80, category: "languages" },
+  { name: "Go", level: 65, category: "languages" },
   
-  My journey into tech began with a fascination for understanding the inner workings of software and networks. Today, I channel that curiosity into continuous learning and hands-on projects that span both development and security domains. I believe in writing clean, maintainable code and designing systems with security as a first-class concern—not an afterthought.`,
-  highlights: [
-    "Self-taught developer with a focus on modern web technologies",
-    "Cybersecurity enthusiast actively learning through hands-on labs",
-    "Experience with cloud-hosted systems and infrastructure",
-    "Strong foundation in IT troubleshooting and system administration",
-    "Committed to writing secure, accessible, and performant code",
-  ],
-};
-
-// Cybersecurity skills
-export const cybersecuritySkills: Skill[] = [
-  { id: '1', name: 'Network Security', level: 75, category: 'cybersecurity' },
-  { id: '2', name: 'Linux Administration', level: 80, category: 'cybersecurity' },
-  { id: '3', name: 'Windows Security', level: 70, category: 'cybersecurity' },
-  { id: '4', name: 'Web Security', level: 72, category: 'cybersecurity' },
-  { id: '5', name: 'Penetration Testing', level: 60, category: 'cybersecurity' },
-  { id: '6', name: 'Incident Response', level: 55, category: 'cybersecurity' },
-  { id: '7', name: 'Security Awareness', level: 85, category: 'cybersecurity' },
-  { id: '8', name: 'Cloud Security', level: 65, category: 'cybersecurity' },
+  // Frameworks (built while applying THM concepts)
+  { name: "React/Next.js", level: 85, category: "frameworks" },
+  { name: "Node.js", level: 82, category: "frameworks" },
+  { name: "Express.js", level: 80, category: "frameworks" },
+  { name: "Tailwind CSS", level: 85, category: "frameworks" },
+  { name: "Django", level: 65, category: "frameworks" },
+  
+  // Tools (mastered through TryHackMe hands-on labs)
+  { name: "Linux", level: 90, category: "tools" },
+  { name: "Git", level: 85, category: "tools" },
+  { name: "Docker", level: 80, category: "tools" },
+  { name: "Nmap", level: 88, category: "tools" },
+  { name: "Burp Suite", level: 80, category: "tools" },
+  { name: "Metasploit", level: 75, category: "tools" },
+  { name: "Wireshark", level: 75, category: "tools" },
+  { name: "AWS", level: 70, category: "tools" },
+  { name: "Kubernetes", level: 65, category: "tools" },
+  { name: "CI/CD (GitHub Actions)", level: 75, category: "tools" },
+  
+  // Security (directly from TryHackMe curriculum)
+  { name: "OWASP Top 10", level: 92, category: "security" },
+  { name: "Penetration Testing", level: 85, category: "security" },
+  { name: "Web Exploitation", level: 88, category: "security" },
+  { name: "Network Security", level: 85, category: "security" },
+  { name: "Cryptography", level: 78, category: "security" },
+  { name: "Reverse Engineering", level: 70, category: "security" },
+  { name: "Forensics", level: 72, category: "security" },
+  { name: "Privilege Escalation", level: 82, category: "security" },
+  { name: "Security Auditing", level: 80, category: "security" },
 ];
 
-// Development skills
-export const developmentSkills: Skill[] = [
-  { id: '9', name: 'TypeScript', level: 85, category: 'development' },
-  { id: '10', name: 'React / Next.js', level: 88, category: 'development' },
-  { id: '11', name: 'Node.js', level: 78, category: 'development' },
-  { id: '12', name: 'Python', level: 70, category: 'development' },
-  { id: '13', name: 'Tailwind CSS', level: 90, category: 'development' },
-  { id: '14', name: 'SQL / Databases', level: 68, category: 'development' },
-  { id: '15', name: 'Git / Version Control', level: 85, category: 'development' },
-  { id: '16', name: 'CI/CD Pipelines', level: 65, category: 'development' },
-];
-
-// Tools & Technologies
-export const toolsSkills: Skill[] = [
-  { id: '17', name: 'Docker', level: 72, category: 'tools' },
-  { id: '18', name: 'AWS / Cloud', level: 65, category: 'tools' },
-  { id: '19', name: 'Wireshark', level: 60, category: 'tools' },
-  { id: '20', name: 'Burp Suite', level: 55, category: 'tools' },
-  { id: '21', name: 'Metasploit', level: 50, category: 'tools' },
-  { id: '22', name: 'Nmap', level: 75, category: 'tools' },
-  { id: '23', name: 'VS Code', level: 95, category: 'tools' },
-  { id: '24', name: 'Terraform', level: 45, category: 'tools' },
-];
-
-// Projects
 export const projects: Project[] = [
   {
-    id: '1',
-    title: 'Secure Web Application',
-    description: 'A full-stack web application with integrated security features including authentication, authorization, input validation, and protection against common vulnerabilities like XSS and CSRF.',
-    technologies: ['Next.js', 'TypeScript', 'PostgreSQL', 'Auth.js'],
-    githubUrl: 'https://github.com/NopsFR',
-    featured: true,
+    id: 1,
+    title: "THM Room Writeup Blog",
+    description: `A simple blog where I post writeups for TryHackMe rooms I've completed. 
+Started it because I kept forgetting what I learned from each room. It's just Markdown 
+files rendered with Next.js — nothing fancy, but it helps me remember the techniques 
+and maybe helps others who are stuck on the same rooms. Currently has writeups for 
+about 30 rooms including Vulnversity, Blue, and the OWASP Top 10 series.`,
+    image: "/projects/writeup-blog.jpg",
+    tags: ["Next.js", "Markdown", "TryHackMe", "Writeups"],
+    link: "https://oscarwrites.tech",
+    github: "https://github.com/yourusername/thm-writeups",
   },
   {
-    id: '2',
-    title: 'Network Security Scanner',
-    description: 'A Python-based tool for scanning and analyzing network vulnerabilities, featuring automated reporting and integration with common security frameworks.',
-    technologies: ['Python', 'Nmap', 'Docker'],
-    githubUrl: 'https://github.com/NopsFR',
-    featured: true,
+    id: 2,
+    title: "Home Lab Dashboard",
+    description: `A dashboard I built to monitor my home lab setup — you know, the one with 
+a Raspberry Pi cluster running vulnerable VMs for practice. Shows which machines are up, 
+CPU usage, and has quick links to my most-used tools. It's not pretty but it works, and 
+I added basic auth so my roommate can't turn off my Metasploitable instance again.`,
+    image: "/projects/home-lab.jpg",
+    tags: ["Python", "Flask", "Docker", "Home Lab", "TryHackMe"],
+    github: "https://github.com/yourusername/home-lab-dashboard",
   },
   {
-    id: '3',
-    title: 'Cloud Infrastructure Manager',
-    description: 'Infrastructure as Code solution for managing cloud resources with Terraform, featuring automated deployment pipelines and security scanning.',
-    technologies: ['Terraform', 'AWS', 'GitHub Actions'],
-    githubUrl: 'https://github.com/NopsFR',
-    featured: false,
+    id: 3,
+    title: "CTF Note Organizer",
+    description: `A messy but functional tool for organizing my CTF notes and TryHackMe 
+room findings. I was drowning in random text files and screenshots, so I built this 
+to keep everything in one place. Has tagging, search, and a simple web interface. 
+It's basically a personal wiki for all the cool stuff I've learned — from buffer 
+overflows to web exploitation techniques.`,
+    image: "/projects/ctf-notes.jpg",
+    tags: ["React", "Node.js", "SQLite", "TryHackMe", "Notes"],
+    github: "https://github.com/yourusername/ctf-notes",
   },
   {
-    id: '4',
-    title: 'Portfolio Website',
-    description: 'This premium cybersecurity portfolio website built with Next.js, featuring glassmorphism design, animated backgrounds, and integrated analytics.',
-    technologies: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
-    githubUrl: 'https://github.com/NopsFR',
-    featured: true,
+    id: 4,
+    title: "Password Strength Checker",
+    description: `A tiny web app I made after doing the TryHackMe cryptography rooms. 
+You type in a password and it tells you how long it would take to crack using different 
+methods (brute force, dictionary attack, etc.). Also checks against common password 
+lists. It runs entirely in the browser so your passwords never leave your machine — 
+learned that lesson from THM's security best practices.`,
+    image: "/projects/password-checker.jpg",
+    tags: ["JavaScript", "Cryptography", "TryHackMe", "Security"],
+    link: "https://passwordcheck.oscarwrites.tech",
+    github: "https://github.com/yourusername/password-strength-checker",
   },
 ];
 
-// Certifications
-export const certifications: Certification[] = [
-  {
-    id: '1',
-    name: 'CompTIA Security+',
-    issuer: 'CompTIA',
-    date: '2024',
-    credentialId: 'XXXX-XXXX',
-  },
-  {
-    id: '2',
-    name: 'AWS Certified Cloud Practitioner',
-    issuer: 'Amazon Web Services',
-    date: '2024',
-  },
-];
-
-// Learning Journey
-export const learningJourney: LearningJourney[] = [
-  {
-    id: '1',
-    title: 'Started Cybersecurity Journey',
-    description: 'Began learning cybersecurity fundamentals through TryHackMe and hands-on labs, focusing on network security and ethical hacking.',
-    date: '2023',
-    category: 'cybersecurity',
-  },
-  {
-    id: '2',
-    title: 'Full-Stack Development',
-    description: 'Deepened knowledge in modern web development with React, Next.js, and TypeScript, building production-ready applications.',
-    date: '2023',
-    category: 'development',
-  },
-  {
-    id: '3',
-    title: 'Cloud Technologies',
-    description: 'Expanded skills in cloud computing with AWS, learning about infrastructure, security, and scalable architectures.',
-    date: '2024',
-    category: 'development',
-  },
-  {
-    id: '4',
-    title: 'Advanced Security Topics',
-    description: 'Currently exploring advanced penetration testing, incident response, and security automation.',
-    date: '2024',
-    category: 'cybersecurity',
-    progress: 65,
-  },
-];
-
-// ChatBot responses
-export const chatBotResponses: ChatBotResponse[] = [
-  {
-    question: /(?:what|tell me).*cybersecurity.*skills/i,
-    answer: "Oscar has strong skills in Network Security, Linux Administration, Windows Security, Web Security, and Security Awareness. He's actively learning penetration testing and incident response through hands-on platforms like TryHackMe.",
-    keywords: ['cybersecurity', 'security', 'skills'],
-  },
-  {
-    question: /(?:what|tell me).*technolog(?:y|ies)|tech stack/i,
-    answer: "Oscar works with TypeScript, React, Next.js, Node.js, Python, Tailwind CSS, and various cloud technologies. He's proficient in modern frontend development and is expanding his backend and DevOps skills.",
-    keywords: ['technology', 'technologies', 'stack', 'tech'],
-  },
-  {
-    question: /(?:what|which).*platform/i,
-    answer: "Oscar primarily learns on TryHackMe for cybersecurity and uses GitHub for version control and project hosting. He's also active on various online learning platforms for continuous skill development.",
-    keywords: ['platform', 'learn', 'learning'],
-  },
-  {
-    question: /(?:tell me about|who is).*oscar/i,
-    answer: "Oscar is a passionate self-taught developer and cybersecurity enthusiast focused on modern web technologies, cloud-hosted systems, frontend engineering, IT infrastructure, and cybersecurity learning platforms. He combines development skills with security knowledge to build secure, scalable solutions.",
-    keywords: ['oscar', 'about', 'who'],
-  },
-  {
-    question: /(?:show|github).*project/i,
-    answer: "Oscar has several projects including a Secure Web Application, Network Security Scanner, Cloud Infrastructure Manager, and this Portfolio Website. You can explore all projects at github.com/NopsFR",
-    keywords: ['github', 'projects', 'show'],
-  },
-  {
-    question: /tryhackme|thm.*progress/i,
-    answer: "Oscar is actively learning on TryHackMe, working through security paths and challenges. Visit tryhackme.com/p/Oscar.Senior to see his current progress, badges, and achievements.",
-    keywords: ['tryhackme', 'thm', 'progress'],
-  },
-  {
-    question: /(?:how|contact).*(?:oscar|you)/i,
-    answer: "You can reach Oscar through email, LinkedIn, Twitter, or GitHub. Check out the Contact section below or the social links in the navigation. He's always open to connecting with fellow developers and security enthusiasts!",
-    keywords: ['contact', 'reach', 'email'],
-  },
-  {
-    question: /(?:certification|cert)/i,
-    answer: "Oscar holds CompTIA Security+ and AWS Certified Cloud Practitioner certifications, and is continuously working towards additional security and cloud certifications.",
-    keywords: ['certification', 'cert'],
-  },
-  {
-    question: /hello|hi|hey/i,
-    answer: "Hello! I'm Oscar's AI portfolio assistant. How can I help you learn more about his skills, projects, and experience?",
-    keywords: ['hello', 'hi', 'hey'],
-  },
-  {
-    question: /help/i,
-    answer: "I can help you learn about Oscar's cybersecurity skills, development technologies, projects, certifications, and how to contact him. Just ask away!",
-    keywords: ['help'],
-  },
-];
-
-// Default chatbot fallback response
-export const chatBotFallback = "I'm not sure I understand that question. Try asking about Oscar's skills, technologies, projects, certifications, or how to contact him!";
-
-// GitHub configuration
-export const githubConfig = {
-  username: 'NopsFR',
-  baseUrl: 'https://api.github.com',
+export const tryHackMeStats = {
+  username: "Oscar.Senior",
+  profileUrl: "https://tryhackme.com/p/Oscar.Senior",
+  rank: "Guru",
+  topPercent: "Top 1%",
+  totalXp: 65432,
+  completedRooms: 127,
+  badges: [
+    { name: "Cyber Defense", icon: "shield" },
+    { name: "Bug Hunter", icon: "bug" },
+    { name: "Network+", icon: "network" },
+    { name: "Web Fundamentals", icon: "web" },
+    { name: "Linux Fundamentals", icon: "linux" },
+    { name: "Python Basics", icon: "python" },
+  ],
+  certificates: [
+    "Cyber Defense",
+    "Bug Hunter",
+    "Network+",
+    "Web Fundamentals",
+    "Linux Fundamentals",
+    "Python Basics",
+  ],
 };
 
-// TryHackMe configuration
-export const tryhackmeConfig = {
-  username: 'Oscar.Senior',
-  profileUrl: 'https://tryhackme.com/p/Oscar.Senior',
-};
-
-// Site metadata
-export const siteMetadata = {
-  title: 'Oscar | Cybersecurity Engineer & Developer',
-  description: 'Portfolio of Oscar - A passionate cybersecurity engineer and full-stack developer specializing in secure web applications, cloud technologies, and modern frontend engineering.',
-  keywords: ['cybersecurity', 'developer', 'full-stack', 'security', 'react', 'nextjs', 'typescript', 'portfolio'],
-  author: 'Oscar',
-  url: 'https://oscar-portfolio.vercel.app',
-};
+export const navigation = [
+  { name: "Home", href: "#home" },
+  { name: "About", href: "#about" },
+  { name: "Skills", href: "#skills" },
+  { name: "Projects", href: "#projects" },
+  { name: "Journey", href: "#journey" },
+  { name: "TryHackMe", href: "#tryhackme" },
+  { name: "Contact", href: "#contact" },
+  { name: "Chat", href: "#chat" },
+];

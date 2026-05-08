@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { Container } from '@/components/layout/Container';
 import { Card, Badge } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
-import { tryhackmeConfig } from '@/data/portfolio';
+import { tryHackMeStats } from '@/data/portfolio';
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
 import {
   FaTrophy,
@@ -14,49 +14,47 @@ import {
   FaShieldAlt,
   FaBug,
   FaNetworkWired,
+  FaGlobe,
+  FaTerminal,
+  FaPython,
+  FaAward,
 } from 'react-icons/fa';
 import { SiTryhackme } from 'react-icons/si';
 
-// Mock TryHackMe stats (in production, this would come from an API)
-const tryhackmeStats = {
-  username: tryhackmeConfig.username,
-  level: 28,
-  rank: 15420,
-  xp: 142500,
-  completedRooms: 52,
-  streakDays: 12,
-  badges: [
-    { name: 'Cyber Defense', icon: FaShieldAlt },
-    { name: 'Bug Hunter', icon: FaBug },
-    { name: 'Network+', icon: FaNetworkWired },
-  ],
+const iconMap: Record<string, React.ElementType> = {
+  shield: FaShieldAlt,
+  bug: FaBug,
+  network: FaNetworkWired,
+  web: FaGlobe,
+  linux: FaTerminal,
+  python: FaPython,
 };
 
 const stats = [
   {
-    label: 'Level',
-    value: tryhackmeStats.level,
+    label: 'Rank',
+    value: tryHackMeStats.rank,
     icon: FaStar,
     color: 'text-yellow-400',
     bgColor: 'bg-yellow-500/20',
   },
   {
-    label: 'Global Rank',
-    value: `#${tryhackmeStats.rank.toLocaleString()}`,
+    label: 'Top Percent',
+    value: tryHackMeStats.topPercent,
     icon: FaTrophy,
     color: 'text-pink-400',
     bgColor: 'bg-pink-500/20',
   },
   {
     label: 'Rooms Completed',
-    value: tryhackmeStats.completedRooms,
+    value: tryHackMeStats.completedRooms,
     icon: FaBook,
     color: 'text-purple-400',
     bgColor: 'bg-purple-500/20',
   },
   {
-    label: 'Day Streak',
-    value: `${tryhackmeStats.streakDays} days`,
+    label: 'Total XP',
+    value: tryHackMeStats.totalXp.toLocaleString(),
     icon: FaFire,
     color: 'text-orange-400',
     bgColor: 'bg-orange-500/20',
@@ -109,10 +107,10 @@ export function TryHackMe() {
                 <SiTryhackme className="text-white" size={36} />
               </div>
               <h3 className="text-2xl font-bold text-white mb-2">
-                {tryhackmeStats.username}
+                {tryHackMeStats.username}
               </h3>
               <p className="text-gray-400">
-                XP: {tryhackmeStats.xp.toLocaleString()}
+                XP: {tryHackMeStats.totalXp.toLocaleString()}
               </p>
             </div>
 
@@ -152,19 +150,56 @@ export function TryHackMe() {
             Earned Badges
           </h3>
           <div className="flex flex-wrap justify-center gap-4">
-            {tryhackmeStats.badges.map((badge, index) => (
+            {tryHackMeStats.badges.map((badge, index) => {
+              const IconComponent = iconMap[badge.icon] || FaAward;
+              return (
+                <motion.div
+                  key={badge.name}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.3, delay: index * 0.1 }}
+                >
+                  <Card hover={false} className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-red-500/20 to-orange-500/20 flex items-center justify-center">
+                      <IconComponent className="text-red-400" size={20} />
+                    </div>
+                    <span className="text-white font-medium">{badge.name}</span>
+                  </Card>
+                </motion.div>
+              );
+            })}
+          </div>
+        </motion.div>
+
+        {/* Certificates */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="max-w-4xl mx-auto mt-12"
+        >
+          <h3 className="text-xl font-semibold text-white text-center mb-6">
+            Certificates
+          </h3>
+          <div className="grid sm:grid-cols-2 gap-4">
+            {tryHackMeStats.certificates.map((cert, index) => (
               <motion.div
-                key={badge.name}
+                key={cert}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.3, delay: index * 0.1 }}
+                transition={{ duration: 0.3, delay: index * 0.05 }}
               >
-                <Card hover={false} className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-red-500/20 to-orange-500/20 flex items-center justify-center">
-                    <badge.icon className="text-red-400" size={20} />
+                <Card glow="cyan" className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-500/20 to-blue-500/20 flex items-center justify-center">
+                    <FaAward className="text-cyan-400" size={20} />
                   </div>
-                  <span className="text-white font-medium">{badge.name}</span>
+                  <div>
+                    <span className="text-white font-medium">{cert}</span>
+                    <p className="text-gray-500 text-xs">TryHackMe Certificate</p>
+                  </div>
                 </Card>
               </motion.div>
             ))}
@@ -181,7 +216,7 @@ export function TryHackMe() {
         >
           <Button
             size="lg"
-            onClick={() => window.open(tryhackmeConfig.profileUrl, '_blank')}
+            onClick={() => window.open(tryHackMeStats.profileUrl, '_blank')}
             leftIcon={<SiTryhackme />}
           >
             View Full Profile

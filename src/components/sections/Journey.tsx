@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import { Container } from '@/components/layout/Container';
 import { Card, Badge } from '@/components/ui/Card';
-import { learningJourney, certifications } from '@/data/portfolio';
+import { experiences } from '@/data/portfolio';
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
 import {
   FaGraduationCap,
@@ -13,14 +13,12 @@ import {
 } from 'react-icons/fa';
 
 const categoryIcons = {
-  cybersecurity: FaGraduationCap,
-  development: FaCode,
+  work: FaCode,
   certification: FaCertificate,
 };
 
 const categoryColors = {
-  cybersecurity: 'pink',
-  development: 'purple',
+  work: 'pink',
   certification: 'cyan',
 } as const;
 
@@ -41,7 +39,7 @@ export function Journey() {
           className="text-center mb-16"
         >
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
-            Learning{' '}
+            My{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-500">
               Journey
             </span>
@@ -60,9 +58,9 @@ export function Journey() {
 
           {/* Timeline items */}
           <div className="space-y-8">
-            {learningJourney.map((item, index) => {
-              const Icon = categoryIcons[item.category];
-              const color = categoryColors[item.category];
+            {experiences.map((item, index) => {
+              const Icon = categoryIcons[item.type];
+              const color = categoryColors[item.type];
               const isLeft = index % 2 === 0;
 
               return (
@@ -81,8 +79,6 @@ export function Journey() {
                     className={`absolute left-4 md:left-1/2 w-4 h-4 rounded-full -translate-x-1/2 z-10 ${
                       color === 'pink'
                         ? 'bg-pink-500 shadow-lg shadow-pink-500/50'
-                        : color === 'purple'
-                        ? 'bg-purple-500 shadow-lg shadow-purple-500/50'
                         : 'bg-cyan-500 shadow-lg shadow-cyan-500/50'
                     }`}
                   />
@@ -93,14 +89,12 @@ export function Journey() {
                       isLeft ? 'md:pr-12' : 'md:pl-12'
                     }`}
                   >
-                    <Card glow={color === 'pink' ? 'pink' : color === 'purple' ? 'purple' : 'none'}>
+                    <Card glow={color === 'pink' ? 'pink' : 'none'}>
                       <div className="flex items-start gap-4">
                         <div
                           className={`flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center ${
                             color === 'pink'
                               ? 'bg-pink-500/20 text-pink-400'
-                              : color === 'purple'
-                              ? 'bg-purple-500/20 text-purple-400'
                               : 'bg-cyan-500/20 text-cyan-400'
                           }`}
                         >
@@ -112,39 +106,24 @@ export function Journey() {
                               className={`text-sm font-medium ${
                                 color === 'pink'
                                   ? 'text-pink-400'
-                                  : color === 'purple'
-                                  ? 'text-purple-400'
                                   : 'text-cyan-400'
                               }`}
                             >
-                              {item.date}
+                              {item.period}
                             </span>
                             <Badge variant={color} size="sm">
-                              {item.category}
+                              {item.type === 'work' ? 'Work' : 'Certification'}
                             </Badge>
                           </div>
                           <h3 className="text-lg font-semibold text-white mb-2">
                             {item.title}
                           </h3>
+                          <p className="text-gray-400 text-sm mb-2">
+                            {item.company}
+                          </p>
                           <p className="text-gray-400 text-sm">
                             {item.description}
                           </p>
-                          {item.progress !== undefined && (
-                            <div className="mt-4">
-                              <div className="flex justify-between text-sm mb-2">
-                                <span className="text-gray-400">Progress</span>
-                                <span className="text-pink-400">
-                                  {item.progress}%
-                                </span>
-                              </div>
-                              <div className="h-2 bg-white/10 rounded-full overflow-hidden">
-                                <div
-                                  className="h-full bg-gradient-to-r from-pink-500 to-purple-500 rounded-full"
-                                  style={{ width: `${item.progress}%` }}
-                                />
-                              </div>
-                            </div>
-                          )}
                         </div>
                       </div>
                     </Card>
@@ -155,7 +134,7 @@ export function Journey() {
           </div>
         </div>
 
-        {/* Certifications */}
+        {/* Certifications Summary */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -171,36 +150,33 @@ export function Journey() {
           </h3>
 
           <div className="grid sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
-            {certifications.map((cert, index) => (
-              <motion.div
-                key={cert.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-              >
-                <Card glow="cyan">
-                  <div className="flex items-start gap-4">
-                    <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center">
-                      <FaAward size={20} />
+            {experiences
+              .filter((exp) => exp.type === 'certification')
+              .map((cert, index) => (
+                <motion.div
+                  key={cert.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: index * 0.1 }}
+                >
+                  <Card glow="cyan">
+                    <div className="flex items-start gap-4">
+                      <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center">
+                        <FaAward size={20} />
+                      </div>
+                      <div className="flex-1">
+                        <h4 className="text-lg font-semibold text-white mb-1">
+                          {cert.title}
+                        </h4>
+                        <p className="text-gray-400 text-sm mb-2">
+                          {cert.company} • {cert.period}
+                        </p>
+                      </div>
                     </div>
-                    <div className="flex-1">
-                      <h4 className="text-lg font-semibold text-white mb-1">
-                        {cert.name}
-                      </h4>
-                      <p className="text-gray-400 text-sm mb-2">
-                        {cert.issuer} • {cert.date}
-                      </p>
-                      {cert.credentialId && (
-                        <Badge variant="cyan" size="sm">
-                          ID: {cert.credentialId}
-                        </Badge>
-                      )}
-                    </div>
-                  </div>
-                </Card>
-              </motion.div>
-            ))}
+                  </Card>
+                </motion.div>
+              ))}
           </div>
         </motion.div>
       </Container>

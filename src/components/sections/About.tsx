@@ -3,19 +3,19 @@
 import { motion } from 'framer-motion';
 import { Container } from '@/components/layout/Container';
 import { Card } from '@/components/ui/Card';
-import { aboutData } from '@/data/portfolio';
+import { personalInfo } from '@/data/portfolio';
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
 import { FaCode, FaShieldAlt, FaCloud, FaTerminal } from 'react-icons/fa';
 
-const highlights = [
-  { icon: FaCode, label: 'Development', value: aboutData.highlights[0] },
-  { icon: FaShieldAlt, label: 'Cybersecurity', value: aboutData.highlights[1] },
-  { icon: FaCloud, label: 'Cloud', value: aboutData.highlights[2] },
-  { icon: FaTerminal, label: 'IT', value: aboutData.highlights[3] },
-];
+// Split bio into paragraphs
+const paragraphs = personalInfo.bio.split('\n').filter((p) => p.trim());
 
-// Split description into paragraphs
-const paragraphs = aboutData.description.split('\n\n').filter((p) => p.trim());
+const highlights = [
+  { icon: FaCode, label: 'Development', value: 'Full-Stack' },
+  { icon: FaShieldAlt, label: 'Cybersecurity', value: 'Ethical Hacking' },
+  { icon: FaCloud, label: 'Cloud', value: 'AWS & Docker' },
+  { icon: FaTerminal, label: 'IT', value: 'Linux & Bash' },
+];
 
 export function About() {
   const { ref, isIntersecting } = useIntersectionObserver<HTMLDivElement>({
@@ -65,7 +65,7 @@ export function About() {
                       O
                     </span>
                     <p className="text-gray-400 mt-4 text-sm sm:text-base">
-                      Cybersecurity Engineer
+                      {personalInfo.title}
                     </p>
                   </div>
                 </div>

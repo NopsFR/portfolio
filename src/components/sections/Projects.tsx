@@ -47,57 +47,47 @@ export function Projects() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <Card
-                className="h-full flex flex-col"
-                glow={project.featured ? 'pink' : 'none'}
-              >
+              <Card className="h-full flex flex-col">
                 {/* Project Header */}
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex-1">
-                    <div className="flex items-center gap-2 mb-2">
-                      <h3 className="text-lg sm:text-xl font-semibold text-white">
-                        {project.title}
-                      </h3>
-                      {project.featured && (
-                        <Badge variant="pink" size="sm">
-                          Featured
-                        </Badge>
-                      )}
-                    </div>
+                    <h3 className="text-lg sm:text-xl font-semibold text-white mb-2">
+                      {project.title}
+                    </h3>
                     <p className="text-gray-400 text-sm leading-relaxed">
                       {project.description}
                     </p>
                   </div>
                 </div>
 
-                {/* Technologies */}
+                {/* Tags */}
                 <div className="flex flex-wrap gap-2 mb-6">
-                  {project.technologies.map((tech) => (
-                    <Badge key={tech} variant="default" size="sm">
-                      {tech}
+                  {project.tags.map((tag) => (
+                    <Badge key={tag} variant="default" size="sm">
+                      {tag}
                     </Badge>
                   ))}
                 </div>
 
                 {/* Actions */}
                 <div className="flex items-center gap-3 mt-auto flex-wrap">
-                  {project.githubUrl && (
+                  {project.github && (
                     <Button
                       variant="outline"
                       size="sm"
                       onClick={() =>
-                        window.open(project.githubUrl, '_blank')
+                        window.open(project.github, '_blank')
                       }
                       leftIcon={<FaGithub />}
                     >
                       Code
                     </Button>
                   )}
-                  {project.liveUrl && (
+                  {project.link && (
                     <Button
                       variant="ghost"
                       size="sm"
-                      onClick={() => window.open(project.liveUrl, '_blank')}
+                      onClick={() => window.open(project.link, '_blank')}
                       leftIcon={<FaExternalLinkAlt />}
                     >
                       Live Demo

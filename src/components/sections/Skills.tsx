@@ -4,11 +4,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Container } from '@/components/layout/Container';
 import { Card, SkillBar, Badge } from '@/components/ui/Card';
-import {
-  cybersecuritySkills,
-  developmentSkills,
-  toolsSkills,
-} from '@/data/portfolio';
+import { skills } from '@/data/portfolio';
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
 import {
   FaShieldAlt,
@@ -16,26 +12,30 @@ import {
   FaTools,
 } from 'react-icons/fa';
 
+// Filter skills by category
+const getSkillsByCategory = (category: 'security' | 'languages' | 'frameworks' | 'tools') => 
+  skills.filter(skill => skill.category === category);
+
 const skillCategories = [
   {
-    id: 'cybersecurity',
+    id: 'security',
     label: 'Cybersecurity',
     icon: FaShieldAlt,
-    skills: cybersecuritySkills,
+    skills: getSkillsByCategory('security'),
     color: 'pink',
   },
   {
-    id: 'development',
-    label: 'Development',
+    id: 'languages',
+    label: 'Languages & Frameworks',
     icon: FaCode,
-    skills: developmentSkills,
+    skills: [...getSkillsByCategory('languages'), ...getSkillsByCategory('frameworks')],
     color: 'purple',
   },
   {
     id: 'tools',
     label: 'Tools & Platforms',
     icon: FaTools,
-    skills: toolsSkills,
+    skills: getSkillsByCategory('tools'),
     color: 'cyan',
   },
 ];
@@ -62,7 +62,7 @@ const colorMap = {
 };
 
 export function Skills() {
-  const [activeCategory, setActiveCategory] = useState('cybersecurity');
+  const [activeCategory, setActiveCategory] = useState('security');
   const { ref, isIntersecting } = useIntersectionObserver<HTMLDivElement>({
     threshold: 0.1,
   });
@@ -119,7 +119,7 @@ export function Skills() {
           <AnimatePresence mode="popLayout">
             {currentCategory?.skills.map((skill, index) => (
               <motion.div
-                key={skill.id}
+                key={skill.name}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}

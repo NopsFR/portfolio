@@ -61,57 +61,57 @@ export function AnimatedBackground() {
       {/* Base dark background */}
       <div className="absolute inset-0 bg-[#0a0a0f]" />
 
-      {/* Animated gradient orbs */}
+      {/* Animated gradient orbs - Pink Hacking Theme */}
       <motion.div
         style={{ x: backgroundX, y: backgroundY }}
         className="absolute inset-0"
       >
-        {/* Large pink gradient */}
+        {/* Large pink gradient - main */}
         <div
           className="absolute rounded-full blur-[120px] opacity-20"
           style={{
             width: '600px',
             height: '600px',
-            background: 'radial-gradient(circle, rgba(236, 72, 153, 0.4) 0%, transparent 70%)',
+            background: 'radial-gradient(circle, rgba(255, 45, 123, 0.4) 0%, transparent 70%)',
             top: '10%',
             left: '20%',
             animation: 'float 20s ease-in-out infinite',
           }}
         />
 
-        {/* Purple gradient */}
+        {/* Secondary pink gradient */}
         <div
           className="absolute rounded-full blur-[120px] opacity-15"
           style={{
             width: '500px',
             height: '500px',
-            background: 'radial-gradient(circle, rgba(139, 92, 246, 0.4) 0%, transparent 70%)',
+            background: 'radial-gradient(circle, rgba(255, 77, 141, 0.4) 0%, transparent 70%)',
             top: '50%',
             right: '10%',
             animation: 'float 25s ease-in-out infinite reverse',
           }}
         />
 
-        {/* Cyan gradient */}
+        {/* Cyan accent gradient - for contrast */}
         <div
-          className="absolute rounded-full blur-[120px] opacity-10"
+          className="absolute rounded-full blur-[120px] opacity-8"
           style={{
             width: '400px',
             height: '400px',
-            background: 'radial-gradient(circle, rgba(6, 182, 212, 0.4) 0%, transparent 70%)',
+            background: 'radial-gradient(circle, rgba(0, 240, 255, 0.4) 0%, transparent 70%)',
             bottom: '10%',
             left: '30%',
             animation: 'float 18s ease-in-out infinite',
           }}
         />
 
-        {/* Secondary pink gradient */}
+        {/* Tertiary pink gradient */}
         <div
-          className="absolute rounded-full blur-[100px] opacity-15"
+          className="absolute rounded-full blur-[100px] opacity-12"
           style={{
             width: '350px',
             height: '350px',
-            background: 'radial-gradient(circle, rgba(244, 114, 182, 0.4) 0%, transparent 70%)',
+            background: 'radial-gradient(circle, rgba(255, 107, 157, 0.4) 0%, transparent 70%)',
             top: '30%',
             right: '25%',
             animation: 'float 22s ease-in-out infinite',
@@ -119,7 +119,7 @@ export function AnimatedBackground() {
         />
       </motion.div>
 
-      {/* Floating particles */}
+      {/* Floating particles - Pink Hacking Theme */}
       {particles.map((particle) => (
         <motion.div
           key={particle.id}
@@ -131,10 +131,10 @@ export function AnimatedBackground() {
             height: particle.size,
             background: `radial-gradient(circle, ${
               particle.id % 3 === 0
-                ? 'rgba(236, 72, 153, 0.15)'
+                ? 'rgba(255, 45, 123, 0.12)'
                 : particle.id % 3 === 1
-                ? 'rgba(139, 92, 246, 0.1)'
-                : 'rgba(6, 182, 212, 0.08)'
+                ? 'rgba(255, 77, 141, 0.1)'
+                : 'rgba(0, 240, 255, 0.06)'
             } 0%, transparent 70%)`,
             filter: 'blur(40px)',
           }}
@@ -217,7 +217,7 @@ export function MouseGlow() {
         style={{
           width: '400px',
           height: '400px',
-          background: 'radial-gradient(circle, rgba(236, 72, 153, 0.08) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(255, 45, 123, 0.06) 0%, transparent 70%)',
         }}
       />
     </div>

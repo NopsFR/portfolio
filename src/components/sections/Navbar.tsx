@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useScrollPosition } from '@/hooks/useScrollPosition';
-import { navigationLinks } from '@/data/portfolio';
+import { navigation } from '@/data/portfolio';
 import { FaBars, FaTimes } from 'react-icons/fa';
 
 export function Navbar() {
@@ -19,7 +19,7 @@ export function Navbar() {
     };
 
     const handleScroll = () => {
-      const sections = navigationLinks.map((link) => link.href.replace('#', ''));
+      const sections = navigation.map((link) => link.href.replace('#', ''));
       const scrollPos = window.scrollY + 100;
 
       for (const section of sections) {
@@ -85,9 +85,9 @@ export function Navbar() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-1">
-            {navigationLinks.map((link) => (
+            {navigation.map((link) => (
               <motion.button
-                key={link.label}
+                key={link.name}
                 onClick={() => scrollToSection(link.href)}
                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
                   activeSection === link.href.replace('#', '')
@@ -97,7 +97,7 @@ export function Navbar() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                {link.label}
+                {link.name}
               </motion.button>
             ))}
           </div>
@@ -124,9 +124,9 @@ export function Navbar() {
             className="md:hidden bg-[#0a0a0f]/95 backdrop-blur-xl border-b border-white/10"
           >
             <div className="px-4 py-4 space-y-2">
-              {navigationLinks.map((link, index) => (
+              {navigation.map((link, index) => (
                 <motion.button
-                  key={link.label}
+                  key={link.name}
                   onClick={() => scrollToSection(link.href)}
                   className={`block w-full text-left px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200 ${
                     activeSection === link.href.replace('#', '')
@@ -137,7 +137,7 @@ export function Navbar() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.05 }}
                 >
-                  {link.label}
+                  {link.name}
                 </motion.button>
               ))}
             </div>
