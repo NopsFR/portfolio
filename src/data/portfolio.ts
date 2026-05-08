@@ -50,10 +50,7 @@ export const experiences: Experience[] = [
     title: "Junior Security Analyst",
     company: "TechCorp Inc.",
     period: "2023 — Present",
-    description: `Started my cybersecurity journey here in 2023. Still learning the ropes but already 
-contributing — helped find a SQL injection vulnerability and assisted with security scans. 
-Working alongside senior engineers who teach me something new every day. It's humbling but 
-I'm making progress.`,
+    description: "Started my cybersecurity journey. Learning security scanning and vulnerability assessment.",
     type: "work",
   },
   {
@@ -61,10 +58,7 @@ I'm making progress.`,
     title: "Full-Stack Developer",
     company: "StartupXYZ",
     period: "2021 — 2023",
-    description: `Built and scaled a React/Node.js platform from zero to 10k users. Wrote my fair 
-share of bugs, fixed even more. Implemented authentication, payment processing, and real-time 
-features. Started getting really into security after we had a close call with a data breach. 
-That's when I realized: building fast is great, but building secure is essential.`,
+    description: "Built a React/Node.js platform. Implemented authentication and payment processing.",
     type: "work",
   },
   {
@@ -72,9 +66,7 @@ That's when I realized: building fast is great, but building secure is essential
     title: "CompTIA Security+",
     company: "CompTIA",
     period: "2024",
-    description: `Got my Security+ certification to formalize all the security knowledge I'd picked 
-up through hands-on work. Passed on the first try. The exam was tough but it forced me to 
-learn the theory behind the practices I'd already been using.`,
+    description: "Security+ certification. Learned security fundamentals and best practices.",
     type: "certification",
   },
   {
@@ -82,9 +74,7 @@ learn the theory behind the practices I'd already been using.`,
     title: "Certified Ethical Hacker (CEH)",
     company: "EC-Council",
     period: "2025",
-    description: `Went deep into penetration testing methodologies, attack vectors, and countermeasures. 
-This cert gave me the structured approach to what I'd been doing somewhat organically. 
-Now I can think like a hacker and defend like a fortress.`,
+    description: "CEH certification. Studied penetration testing and ethical hacking methodologies.",
     type: "certification",
   },
 ];
