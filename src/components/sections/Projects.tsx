@@ -95,16 +95,6 @@ export function Projects() {
                         Code
                       </Button>
                     )}
-                    {project.link && (
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        onClick={() => window.open(project.link, '_blank')}
-                        leftIcon={<FaExternalLinkAlt />}
-                      >
-                        Live Demo
-                      </Button>
-                    )}
                   </div>
                 </div>
               </Card>
