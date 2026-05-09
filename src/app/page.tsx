@@ -33,6 +33,16 @@ const Skills = dynamic(
   { ssr: false }
 );
 
+const HackerTypes = dynamic(
+  () => import('@/components/sections').then((mod) => mod.HackerTypes),
+  { ssr: false }
+);
+
+const LearningPaths = dynamic(
+  () => import('@/components/sections').then((mod) => mod.LearningPaths),
+  { ssr: false }
+);
+
 const Journey = dynamic(
   () => import('@/components/sections').then((mod) => mod.Journey),
   { ssr: false }
@@ -91,6 +101,12 @@ export default function Home() {
 
       {/* Skills Section */}
       <Skills />
+
+      {/* Hacker Types Section */}
+      <HackerTypes />
+
+      {/* Learning Paths Section */}
+      <LearningPaths />
 
       {/* Journey Section */}
       <Journey />

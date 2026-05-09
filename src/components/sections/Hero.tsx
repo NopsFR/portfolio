@@ -172,38 +172,14 @@ export function Hero() {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.6 }}
           >
-            <Button
-              size="lg"
-              onClick={() => {
-                const element = document.getElementById('projects');
-                element?.scrollIntoView({ behavior: 'smooth' });
-              }}
-              leftIcon={
-                <svg
-                  className="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M13 10V3L4 14h7v7l9-11h-7z"
-                  />
-                </svg>
-              }
+            <a
+              href="/resume.pdf"
+              download
+              className="inline-flex items-center gap-2 px-6 py-3 text-base font-medium text-green-400 border border-green-500/50 rounded-lg hover:bg-green-500/10 hover:border-green-500 transition-all duration-300"
             >
-              View My Work
-            </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              onClick={() => window.open('/resume.pdf', '_blank')}
-              leftIcon={<FaDownload />}
-            >
+              <FaDownload />
               Download Resume
-            </Button>
+            </a>
           </motion.div>
 
           {/* Social Links */}

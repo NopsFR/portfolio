@@ -4,6 +4,8 @@ export { About } from './About';
 export { Skills } from './Skills';
 export { Projects } from './Projects';
 export { Journey } from './Journey';
+export { HackerTypes } from './HackerTypes';
+export { LearningPaths } from './LearningPaths';
 export { TryHackMe } from './TryHackMe';
 export { SecurityDemo } from './SecurityDemo';
 export { Cybersecurity101 } from './Cybersecurity101';

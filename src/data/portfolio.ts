@@ -174,6 +174,8 @@ export const navigation = [
   { name: "Home", href: "#home" },
   { name: "About", href: "#about" },
   { name: "Skills", href: "#skills" },
+  { name: "Hackers", href: "#hacker-types" },
+  { name: "Learning", href: "#learning-paths" },
   { name: "Journey", href: "#journey" },
   { name: "TryHackMe", href: "#tryhackme" },
   { name: "Cybersecurity 101", href: "#cybersecurity-101" },
