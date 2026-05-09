@@ -22,9 +22,10 @@ export function AnimatedBackground() {
   const springY = useSpring(mouseY, springConfig);
   
   const [particles, setParticles] = useState<Particle[]>([]);
+  const [snowflakes, setSnowflakes] = useState<{ id: number; left: number; size: number; duration: number; delay: number; opacity: number; }[]>([]);
 
   useEffect(() => {
-    // Generate random particles
+    // Generate random background orbs/particles (kept subtle)
     const newParticles: Particle[] = [];
     for (let i = 0; i < 20; i++) {
       newParticles.push({
@@ -37,6 +38,21 @@ export function AnimatedBackground() {
       });
     }
     setParticles(newParticles);
+
+    // Generate subtle snow particles
+    const flakes: { id: number; left: number; size: number; duration: number; delay: number; opacity: number; }[] = [];
+    const count = 80; // slightly increased for visibility but still subtle
+    for (let i = 0; i < count; i++) {
+      flakes.push({
+        id: i,
+        left: Math.random() * 100,
+        size: Math.random() * 3 + 1.2,
+        duration: Math.random() * 10 + 6,
+        delay: Math.random() * -12,
+        opacity: Math.random() * 0.16 + 0.04,
+      });
+    }
+    setSnowflakes(flakes);
   }, []);
 
   const handleMouseMove = (e: React.MouseEvent) => {
@@ -68,37 +84,37 @@ export function AnimatedBackground() {
       >
         {/* Large green gradient - main (Matrix green) */}
         <div
-          className="absolute rounded-full blur-[120px] opacity-15"
+          className="absolute rounded-full blur-3xl opacity-30"
           style={{
-            width: '600px',
-            height: '600px',
-            background: 'radial-gradient(circle, rgba(0, 255, 65, 0.4) 0%, transparent 70%)',
-            top: '10%',
-            left: '20%',
+            width: '520px',
+            height: '520px',
+            background: 'radial-gradient(circle, rgba(0, 208, 132, 0.25) 0%, transparent 70%)',
+            top: '8%',
+            left: '18%',
             animation: 'float 20s ease-in-out infinite',
           }}
         />
 
         {/* Secondary cyan gradient */}
         <div
-          className="absolute rounded-full blur-[120px] opacity-12"
+          className="absolute rounded-full blur-3xl opacity-22"
           style={{
-            width: '500px',
-            height: '500px',
-            background: 'radial-gradient(circle, rgba(0, 255, 255, 0.4) 0%, transparent 70%)',
+            width: '420px',
+            height: '420px',
+            background: 'radial-gradient(circle, rgba(0, 216, 255, 0.2) 0%, transparent 70%)',
             top: '50%',
-            right: '10%',
+            right: '12%',
             animation: 'float 25s ease-in-out infinite reverse',
           }}
         />
 
         {/* Emerald accent gradient */}
         <div
-          className="absolute rounded-full blur-[120px] opacity-8"
+          className="absolute rounded-full blur-2xl opacity-18"
           style={{
-            width: '400px',
-            height: '400px',
-            background: 'radial-gradient(circle, rgba(0, 255, 136, 0.4) 0%, transparent 70%)',
+            width: '360px',
+            height: '360px',
+            background: 'radial-gradient(circle, rgba(0, 216, 132, 0.15) 0%, transparent 70%)',
             bottom: '10%',
             left: '30%',
             animation: 'float 18s ease-in-out infinite',
@@ -107,13 +123,13 @@ export function AnimatedBackground() {
 
         {/* Tertiary green gradient */}
         <div
-          className="absolute rounded-full blur-[100px] opacity-10"
+          className="absolute rounded-full blur-2xl opacity-20"
           style={{
-            width: '350px',
-            height: '350px',
-            background: 'radial-gradient(circle, rgba(51, 255, 102, 0.4) 0%, transparent 70%)',
+            width: '320px',
+            height: '320px',
+            background: 'radial-gradient(circle, rgba(51, 255, 102, 0.12) 0%, transparent 70%)',
             top: '30%',
-            right: '25%',
+            right: '22%',
             animation: 'float 22s ease-in-out infinite',
           }}
         />
@@ -172,6 +188,27 @@ export function AnimatedBackground() {
           backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
         }}
       />
+
+      {/* Subtle matrix rain effect (placed above gradients, below snow) */}
+      <div className="matrix-rain" />
+
+      {/* Subtle snow overlay (elements positioned above matrix rain, below content) */}
+      <div className="snow-overlay">
+        {snowflakes.map((flake) => (
+          <div
+            key={`flake-${flake.id}`}
+            className="snowflake"
+            style={{
+              left: `${flake.left}%`,
+              width: `${flake.size}px`,
+              height: `${flake.size}px`,
+              opacity: flake.opacity,
+              animationDuration: `${flake.duration}s`,
+              animationDelay: `${flake.delay}s`,
+            }}
+          />
+        ))}
+      </div>
     </div>
   );
 }

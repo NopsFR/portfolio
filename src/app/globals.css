@@ -17,69 +17,67 @@
   /* Primary Colors - Deep Dark Terminal */
   --background: #0a0a0a;
   --background-alt: #0d1117;
-  --foreground: #e5e5e5;
-  --foreground-muted: #888890;
+  --foreground: #e6eef0; /* slightly softer white for better contrast */
+  --foreground-muted: #98a0a6;
 
-  /* Brand Colors - Hacker Green (Primary) */
-  --primary: #00ff41;
-  --primary-light: #33ff66;
-  --primary-dark: #00cc33;
-  --primary-glow: rgba(0, 255, 65, 0.15);
+  /* Brand Colors - Refined Hacker Green (Primary) */
+  --primary: #00d084; /* slightly desaturated for professionalism */
+  --primary-light: #33e6a0;
+  --primary-dark: #009b62;
+  --primary-glow: rgba(0, 208, 132, 0.12);
 
-  /* Secondary Colors - Matrix Green */
-  --secondary: #00ff88;
-  --secondary-light: #4dffaa;
-  --secondary-dark: #00cc6a;
+  /* Secondary Colors - Complementary Greens */
+  --secondary: #00c78f;
+  --secondary-light: #55d7a6;
+  --secondary-dark: #008c63;
 
-  /* Accent Colors - Cyber Cyan & Warning Amber */
-  --accent: #00ffff;
-  --accent-light: #4dffff;
-  --accent-dark: #00cccc;
-  --accent-glow: rgba(0, 255, 255, 0.15);
+  /* Accent Colors - Cyber Cyan & Amber */
+  --accent: #00d8ff;
+  --accent-light: #66eaff;
+  --accent-dark: #00a6cc;
+  --accent-glow: rgba(0, 216, 255, 0.12);
 
   /* Warning/Alert Color */
-  --warning: #ff6b00;
-  --warning-glow: rgba(255, 107, 0, 0.15);
+  --warning: #ff7a2a;
+  --warning-glow: rgba(255, 122, 42, 0.12);
 
   /* Terminal Colors */
-  --terminal-green: #00ff41;
-  --terminal-green-dim: #00cc33;
-  --terminal-green-glow: rgba(0, 255, 65, 0.2);
-  --terminal-amber: #ffaa00;
-  --terminal-red: #ff3333;
+  --terminal-green: #00d084;
+  --terminal-green-dim: #009b62;
+  --terminal-green-glow: rgba(0, 208, 132, 0.14);
+  --terminal-amber: #ffb357;
+  --terminal-red: #ff5b5b;
 
-  /* Glass Effect Colors */
-  --glass-bg: rgba(0, 255, 65, 0.02);
-  --glass-bg-hover: rgba(0, 255, 65, 0.08);
-  --glass-border: rgba(0, 255, 65, 0.1);
-  --glass-border-hover: rgba(0, 255, 65, 0.4);
-  --glass-shadow: rgba(0, 255, 65, 0.08);
+  /* Glass Effect Colors (more subtle) */
+  --glass-bg: rgba(255,255,255,0.02);
+  --glass-bg-hover: rgba(255,255,255,0.04);
+  --glass-border: rgba(255,255,255,0.06);
+  --glass-border-hover: rgba(255,255,255,0.12);
+  --glass-shadow: rgba(0,0,0,0.48);
 
-  /* Gradients */
-  --gradient-primary: linear-gradient(135deg, var(--primary), var(--secondary));
-  --gradient-accent: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
-  --gradient-terminal: linear-gradient(135deg, #00ff41, #00ff88, #00ffff);
-
-  /* Typography - Terminal/Hacker Style */
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', 'Monaco', monospace;
+  /* Gradients (subtler) */
+  --gradient-primary: linear-gradient(90deg, var(--primary-dark), var(--primary));
+  --gradient-accent: linear-gradient(90deg, var(--primary), var(--accent));
+  --gradient-terminal: linear-gradient(90deg, var(--terminal-green-dim), var(--terminal-green), var(--accent));
+  
+  /* Typography - Professional + Terminal */
+  --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'SFMono-Regular', 'Consolas', 'Monaco', monospace;
   --font-terminal: 'Courier New', 'Courier', monospace;
 
   /* Spacing */
-  --section-padding: 5rem;
-  --container-max: 1280px;
-
-  /* Transitions */
-  --transition-fast: 150ms ease;
-  --transition-base: 250ms ease;
-  --transition-slow: 400ms ease;
-
-  /* Border Radius */
+  --section-padding: 4.5rem;
+  --container-max: 1200px;
+  /* Transitions */
+  --transition-fast: 140ms ease;
+  --transition-base: 220ms ease;
+  --transition-slow: 360ms ease;
+  /* Border Radius */
   --radius-sm: 0.375rem;
   --radius-md: 0.5rem;
-  --radius-lg: 0.75rem;
-  --radius-xl: 1rem;
-  --radius-2xl: 1.5rem;
+  --radius-lg: 0.5rem; /* slightly tighter corners for a modern look */
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
   --radius-full: 9999px;
 }
 
@@ -245,22 +243,22 @@ select:focus-visible {
    9. GLASSMORPHISM UTILITIES
    ============================================ */
 .glass {
-  background: linear-gradient(135deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-  backdrop-filter: blur(18px) saturate(120%);
-  -webkit-backdrop-filter: blur(18px) saturate(120%);
-  border: 1px solid rgba(255,255,255,0.06);
+  background: linear-gradient(135deg, var(--glass-bg), rgba(255,255,255,0.01));
+  backdrop-filter: blur(12px) saturate(110%);
+  -webkit-backdrop-filter: blur(12px) saturate(110%);
+  border: 1px solid var(--glass-border);
   border-radius: var(--radius-xl);
-  box-shadow: 0 8px 30px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.02);
+  box-shadow: 0 6px 24px var(--glass-shadow), inset 0 1px 0 rgba(255,255,255,0.02);
   transition: background var(--transition-base), border-color var(--transition-base), transform var(--transition-base), box-shadow var(--transition-base);
   -webkit-tap-highlight-color: transparent;
   overflow: hidden;
 }
 
 .glass:hover {
-  background: linear-gradient(135deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
-  border-color: rgba(255,255,255,0.12);
-  transform: translateY(-3px);
-  box-shadow: 0 16px 40px rgba(0,0,0,0.55), 0 0 40px var(--primary-glow);
+  background: linear-gradient(135deg, var(--glass-bg-hover), rgba(255,255,255,0.02));
+  border-color: var(--glass-border-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.55), 0 0 18px var(--primary-glow);
 }
 
 .glass-strong {
@@ -530,26 +528,27 @@ select:focus-visible {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
-  font-weight: 600;
-  font-size: 0.875rem;
-  border-radius: var(--radius-lg);
+  padding: 0.65rem 1.25rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+  border-radius: var(--radius-md);
   background: var(--gradient-primary);
-  color: #0a0a0a;
-  border: none;
+  color: #0a0a0a; /* dark text looks crisp on the soft green gradient */
+  border: 1px solid rgba(0,0,0,0.06);
   cursor: pointer;
-  transition: all var(--transition-base);
+  transition: transform var(--transition-fast), box-shadow var(--transition-base), opacity var(--transition-fast);
   position: relative;
   overflow: hidden;
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(0, 255, 65, 0.4);
+  box-shadow: 0 12px 30px rgba(0, 208, 132, 0.12);
 }
 
 .btn-primary:active {
   transform: translateY(0);
+  opacity: 0.98;
 }
 
 .btn-secondary {
@@ -557,21 +556,22 @@ select:focus-visible {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
+  padding: 0.6rem 1.1rem;
   font-weight: 600;
-  font-size: 0.875rem;
-  border-radius: var(--radius-lg);
+  font-size: 0.9rem;
+  border-radius: var(--radius-md);
   background: transparent;
-  color: var(--primary-light);
-  border: 1px solid var(--primary);
+  color: var(--primary);
+  border: 1px solid rgba(255,255,255,0.06);
   cursor: pointer;
-  transition: all var(--transition-base);
+  transition: background var(--transition-fast), transform var(--transition-fast), color var(--transition-fast);
 }
 
 .btn-secondary:hover {
-  background: rgba(0, 255, 65, 0.1);
+  background: rgba(255,255,255,0.02);
   transform: translateY(-2px);
 }
+
 
 /* ============================================
    15. CARD STYLES
@@ -818,6 +818,116 @@ select:focus-visible {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+/* ============================================
+   19. SUBTLE MATRIX RAIN (binary rainbow)
+   Subtle binary rain with a soft rainbow gradient.
+   ============================================ */
+.matrix-rain {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: -6;
+  overflow: hidden;
+  opacity: 0.16;
+  mix-blend-mode: screen;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'>%3Cdefs%3E%3ClinearGradient id='g' x1='0' x2='1'%3E%3Cstop offset='0' stop-color='%23ff0000'/%3E%3Cstop offset='0.17' stop-color='%23ff7f00'/%3E%3Cstop offset='0.34' stop-color='%23ffff00'/%3E%3Cstop offset='0.51' stop-color='%2300ff00'/%3E%3Cstop offset='0.68' stop-color='%2300ffff'/%3E%3Cstop offset='0.85' stop-color='%23007fff'/%3E%3Cstop offset='1' stop-color='%239b00ff'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='transparent'/%3E%3Ctext x='0' y='18' font-family='monospace' font-size='14' fill='url(%23g)'>0101010101010101010101010101010101010101</text%3E%3Ctext x='0' y='36' font-family='monospace' font-size='14' fill='url(%23g)'>1010101010101010101010101010101010101010</text%3E%3Ctext x='0' y='54' font-family='monospace' font-size='14' fill='url(%23g)'>0101010101010101010101010101010101010101</text%3E%3Ctext x='0' y='72' font-family='monospace' font-size='14' fill='url(%23g)'>1010101010101010101010101010101010101010</text%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 160px 160px;
+  animation: matrix-scroll 14s linear infinite;
+  filter: contrast(110%) saturate(130%) blur(0.6px);
+}
+.matrix-rain-canvas {
+  display: none;
+}
+@keyframes matrix-scroll {
+  0% { background-position-y: -100%; opacity: 0.12; }
+  50% { opacity: 0.22; }
+  100% { background-position-y: 100%; opacity: 0.08; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .matrix-rain, .matrix-rain-canvas { animation: none !important; opacity: 0 !important; }
+}
+
+/* ============================================
+   20. GLOBAL GLASS + SUBTLE SNOW
+   Applies a refined glass effect across major layout elements
+   and a very subtle snow overlay for atmosphere.
+   ============================================ */
+
+/* Apply subtle glass to major layout elements (non-invasive) */
+nav, header, footer, .container, .section, .card, button, .btn-primary, .btn-secondary {
+  background: linear-gradient(135deg, var(--glass-bg), rgba(255,255,255,0.02));
+  backdrop-filter: blur(16px) saturate(120%);
+  -webkit-backdrop-filter: blur(16px) saturate(120%);
+  border: 1px solid rgba(255,255,255,0.06);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.55), 0 0 18px var(--primary-glow);
+  transition: box-shadow var(--transition-base), transform var(--transition-base), background var(--transition-base);
+}
+
+/* Ensure containers retain comfortable radii
+   but remain clean and consistent */
+.container, .section, .card {
+  border-radius: var(--radius-xl);
+}
+
+/* Make buttons follow glass look where not overridden */
+button, .btn-primary, .btn-secondary {
+  border-radius: var(--radius-md);
+}
+
+/* Snow overlay container placed inside animated background */
+.snow-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: -5; /* sits above the base background but below page content */
+  overflow: visible;
+}
+
+/* Snowflake particles (very subtle) */
+.snowflake {
+  position: absolute;
+  top: -10vh;
+  width: 3px;
+  height: 3px;
+  background: rgba(255,255,255,0.95);
+  border-radius: 50%;
+  filter: blur(0.8px);
+  opacity: 0.16; /* faint but visible */
+  transform: translateY(0);
+  will-change: transform, opacity;
+  animation-name: fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-fill-mode: forwards;
+}
+
+/* Combined fall + gentle sway in one keyframe to avoid transform conflicts */
+@keyframes fall {
+  0% {
+    transform: translate3d(0, -10vh, 0) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.16;
+  }
+  50% {
+    transform: translate3d(12px, 45vh, 0) translateX(12px);
+    opacity: 0.14;
+  }
+  100% {
+    transform: translate3d(-8px, 110vh, 0) translateX(-8px);
+    opacity: 0;
+  }
+}
+
+/* Dampen heavy effects for print/low-power or reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .snowflake { animation: none; opacity: 0; }
+  nav, header, footer, .container, .section, .card, button { backdrop-filter: none; -webkit-backdrop-filter: none; }
+}
+
 
 .break-all { word-break: break-all; }
 

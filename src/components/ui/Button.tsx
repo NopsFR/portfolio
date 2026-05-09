@@ -32,11 +32,11 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
     const variants = {
       primary:
-        'bg-gradient-to-r from-pink-500 to-pink-600 text-white hover:from-pink-600 hover:to-pink-700 focus:ring-pink-500 shadow-lg shadow-pink-500/25 hover:shadow-pink-500/40',
+        'bg-gradient-to-r from-green-400 to-green-500 text-black hover:from-green-500 hover:to-green-600 focus:ring-green-400 shadow-md shadow-green-300/20',
       secondary:
-        'bg-gradient-to-r from-purple-500 to-purple-600 text-white hover:from-purple-600 hover:to-purple-700 focus:ring-purple-500 shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40',
+        'bg-transparent border-2 border-green-400 text-green-300 hover:bg-green-500/10 focus:ring-green-400 shadow-sm',
       outline:
-        'border-2 border-pink-500 text-pink-400 hover:bg-pink-500/10 focus:ring-pink-500',
+        'border-2 border-white/10 text-white hover:bg-white/5 focus:ring-white/20',
       ghost: 'text-gray-300 hover:text-white hover:bg-white/5 focus:ring-gray-500',
     };
 

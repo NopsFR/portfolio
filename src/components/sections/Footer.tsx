@@ -18,8 +18,8 @@ export function Footer() {
         <div className="flex flex-col items-center">
           {/* Logo */}
           <motion.div
-            className="w-12 h-12 rounded-xl bg-gradient-to-br from-pink-500 to-purple-600 flex items-center justify-center font-bold text-white text-xl shadow-lg shadow-pink-500/25 mb-6"
-            whileHover={{ scale: 1.1, rotate: 5 }}
+            className="w-12 h-12 rounded-xl bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center font-bold text-white text-xl shadow-md shadow-green-300/20 mb-6"
+            whileHover={{ scale: 1.05, rotate: 2 }}
           >
             O
           </motion.div>

@@ -84,10 +84,10 @@ export function Navbar() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <div className="w-8 h-8 md:w-10 md:h-10 rounded-xl bg-gradient-to-br from-pink-500 to-purple-600 flex items-center justify-center font-bold text-white text-sm md:text-lg shadow-lg shadow-pink-500/25">
+            <div className="w-8 h-8 md:w-10 md:h-10 rounded-xl bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center font-bold text-white text-sm md:text-lg shadow-md shadow-green-300/20">
               O
             </div>
-            <span className="text-white font-semibold text-base md:text-lg hidden sm:block group-hover:text-pink-400 transition-colors">
+            <span className="text-white font-semibold text-base md:text-lg hidden sm:block group-hover:text-green-300 transition-colors">
               Oscar
             </span>
           </motion.a>
