@@ -74,42 +74,38 @@ export const experiences: Experience[] = [
 ];
 
 export const skills: Skill[] = [
-  // Languages (honed through TryHackMe scripting challenges)
+  // Languages (used in TryHackMe challenges and security scripting)
   { name: "Python", level: 90, category: "languages" },
-  { name: "Bash", level: 85, category: "languages" },
-  { name: "JavaScript/TypeScript", level: 80, category: "languages" },
-  { name: "SQL", level: 80, category: "languages" },
-  { name: "Go", level: 65, category: "languages" },
+  { name: "Bash", level: 88, category: "languages" },
+  { name: "JavaScript/TypeScript", level: 82, category: "languages" },
+  { name: "SQL", level: 85, category: "languages" },
+  { name: "PowerShell", level: 75, category: "languages" },
   
-  // Frameworks (built while applying THM concepts)
+  // Frameworks (used for security tools and web app testing)
   { name: "React/Next.js", level: 85, category: "frameworks" },
   { name: "Node.js", level: 82, category: "frameworks" },
-  { name: "Express.js", level: 80, category: "frameworks" },
+  { name: "Flask", level: 70, category: "frameworks" },
   { name: "Tailwind CSS", level: 85, category: "frameworks" },
-  { name: "Django", level: 65, category: "frameworks" },
   
-  // Tools (mastered through TryHackMe hands-on labs)
-  { name: "Linux", level: 90, category: "tools" },
-  { name: "Git", level: 85, category: "tools" },
-  { name: "Docker", level: 80, category: "tools" },
-  { name: "Nmap", level: 88, category: "tools" },
-  { name: "Burp Suite", level: 80, category: "tools" },
-  { name: "Metasploit", level: 75, category: "tools" },
-  { name: "Wireshark", level: 75, category: "tools" },
-  { name: "AWS", level: 70, category: "tools" },
-  { name: "Kubernetes", level: 65, category: "tools" },
-  { name: "CI/CD (GitHub Actions)", level: 75, category: "tools" },
+  // Security Tools (mastered through TryHackMe labs)
+  { name: "Burp Suite", level: 88, category: "tools" },
+  { name: "Nmap", level: 90, category: "tools" },
+  { name: "Metasploit", level: 82, category: "tools" },
+  { name: "Wireshark", level: 80, category: "tools" },
+  { name: "John the Ripper", level: 75, category: "tools" },
+  { name: "Hydra", level: 78, category: "tools" },
+  { name: "Gobuster", level: 85, category: "tools" },
+  { name: "BloodHound", level: 72, category: "tools" },
   
-  // Security (directly from TryHackMe curriculum)
+  // Security Domains (from TryHackMe learning paths)
+  { name: "Web Exploitation", level: 90, category: "security" },
   { name: "OWASP Top 10", level: 92, category: "security" },
-  { name: "Penetration Testing", level: 85, category: "security" },
-  { name: "Web Exploitation", level: 88, category: "security" },
-  { name: "Network Security", level: 85, category: "security" },
+  { name: "Network Penetration Testing", level: 85, category: "security" },
+  { name: "Privilege Escalation", level: 88, category: "security" },
+  { name: "Active Directory", level: 80, category: "security" },
   { name: "Cryptography", level: 78, category: "security" },
-  { name: "Reverse Engineering", level: 70, category: "security" },
-  { name: "Forensics", level: 72, category: "security" },
-  { name: "Privilege Escalation", level: 82, category: "security" },
-  { name: "Security Auditing", level: 80, category: "security" },
+  { name: "Digital Forensics", level: 72, category: "security" },
+  { name: "Reverse Engineering", level: 68, category: "security" },
 ];
 
 export const projects: Project[] = [
@@ -117,7 +113,7 @@ export const projects: Project[] = [
     id: 1,
     title: "OWASP Top 10 Lab",
     description: "Interactive web application showcasing solutions for all OWASP Top 10 vulnerabilities. Built as a learning tool for secure coding practices.",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&q=80",
     tags: ["React", "Node.js", "OWASP", "Security", "TryHackMe"],
     link: "https://owasplab.oscarwrites.tech",
     github: "https://github.com/NopsFR/owasp-top10-lab",
@@ -126,7 +122,7 @@ export const projects: Project[] = [
     id: 2,
     title: "Network Scanner CLI",
     description: "Advanced network reconnaissance tool inspired by TryHackMe rooms. Features port scanning, service detection, and vulnerability assessment.",
-    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=800&q=80",
     tags: ["Python", "Nmap", "Network Security", "TryHackMe"],
     github: "https://github.com/NopsFR/network-scanner",
   },
@@ -134,7 +130,7 @@ export const projects: Project[] = [
     id: 3,
     title: "CTF Writeup Platform",
     description: "Markdown-based platform for documenting CTF challenges and TryHackMe room completions. Features syntax highlighting and category filtering.",
-    image: "https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1516110833967-0b5716ca1387?w=800&q=80",
     tags: ["Next.js", "Markdown", "CTF", "TryHackMe", "Blog"],
     link: "https://ctfwrites.tech",
     github: "https://github.com/NopsFR/ctf-writeups",
@@ -143,7 +139,7 @@ export const projects: Project[] = [
     id: 4,
     title: "Vulnerability Scanner",
     description: "Automated security scanner for web applications. Detects common vulnerabilities like SQL injection, XSS, and directory traversal.",
-    image: "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80",
     tags: ["Python", "Security", "Automation", "TryHackMe"],
     github: "https://github.com/NopsFR/vuln-scanner",
   },
