@@ -39,12 +39,8 @@ export function Card({
       whileHover={hover ? { y: -4, scale: 1.01 } : undefined}
       className={`
         relative overflow-hidden
-        bg-gradient-to-br from-white/5 to-white/[0.02]
-        backdrop-blur-xl 
-        border border-white/10 
-        rounded-xl p-6
+        glass rounded-xl p-6
         transition-all duration-300
-        hover:border-green-500/30 hover:bg-white/[0.08]
         ${glowStyles[glow]}
         ${onClick ? 'cursor-pointer' : ''}
         ${className}

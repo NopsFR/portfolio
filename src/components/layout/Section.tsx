@@ -38,7 +38,7 @@ export function Section({
       id={id}
       className={`relative ${paddingSizes[padding]} ${backgroundClasses[background]} ${className}`}
     >
-      <Container>{children}</Container>
+      <Container className={`flex flex-col items-center ${className}`}>{children}</Container>
     </section>
   );
 }
