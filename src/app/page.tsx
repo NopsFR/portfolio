@@ -33,11 +33,6 @@ const Skills = dynamic(
   { ssr: false }
 );
 
-const Projects = dynamic(
-  () => import('@/components/sections').then((mod) => mod.Projects),
-  { ssr: false }
-);
-
 const Journey = dynamic(
   () => import('@/components/sections').then((mod) => mod.Journey),
   { ssr: false }
@@ -96,9 +91,6 @@ export default function Home() {
 
       {/* Skills Section */}
       <Skills />
-
-      {/* Projects Section */}
-      <Projects />
 
       {/* Journey Section */}
       <Journey />
