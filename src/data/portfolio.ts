@@ -27,7 +27,7 @@ export const personalInfo = {
   name: "Oscar",
   title: "Cybersecurity Specialist & Full-Stack Developer",
   tagline: "I break things so they become stronger. Then I build them better.",
-  bio: `Hey, I'm Oscar. I code, I break things, I learn — that's basically my whole personality at this point. I got into cybersecurity through TryHackMe and never looked back. There's something about finding that one vulnerability everyone else missed that just hits different. I spend most of my time either grinding THM rooms, working on security tools, or deep in some CTF challenge. I've got my Security+ and CEH, and I'm always chasing the next cert. When I'm not staring at a terminal, I'm probably writing about what I've learned — room writeups, tool breakdowns, stuff like that. If you're into security or just want to talk tech, feel free to reach out. Always happy to connect with people who get it.`,
+  bio: `Hey, I'm Oscar. I code, I break things, I learn — that's basically my whole personality, When I'm not staring at a terminal, If you're into security or just want to talk tech, feel free to reach out. Always happy to connect with ppl :).`,
   email: "Nopsrust@gmail.com",
   location: "Remote / Worldwide",
   // Hacker-themed profile image
@@ -75,17 +75,17 @@ export const experiences: Experience[] = [
 
 export const skills: Skill[] = [
   // Languages (used in TryHackMe challenges and security scripting)
-  { name: "Python", level: 90, category: "languages" },
-  { name: "Bash", level: 88, category: "languages" },
+  { name: "Python", level: 70, category: "languages" },
+  { name: "Bash", level: 60, category: "languages" },
   { name: "JavaScript/TypeScript", level: 82, category: "languages" },
-  { name: "SQL", level: 85, category: "languages" },
+  { name: "SQL", level: 45, category: "languages" },
   { name: "PowerShell", level: 75, category: "languages" },
   
   // Frameworks (used for security tools and web app testing)
   { name: "React/Next.js", level: 85, category: "frameworks" },
   { name: "Node.js", level: 82, category: "frameworks" },
-  { name: "Flask", level: 70, category: "frameworks" },
-  { name: "Tailwind CSS", level: 85, category: "frameworks" },
+  { name: "Flask", level: 20, category: "frameworks" },
+  { name: "Tailwind CSS", level: 78, category: "frameworks" },
   
   // Security Tools (mastered through TryHackMe labs)
   { name: "Burp Suite", level: 88, category: "tools" },
@@ -99,13 +99,13 @@ export const skills: Skill[] = [
   
   // Security Domains (from TryHackMe learning paths)
   { name: "Web Exploitation", level: 90, category: "security" },
-  { name: "OWASP Top 10", level: 92, category: "security" },
+  { name: "OWASP Top 10", level: 38, category: "security" },
   { name: "Network Penetration Testing", level: 85, category: "security" },
   { name: "Privilege Escalation", level: 88, category: "security" },
   { name: "Active Directory", level: 80, category: "security" },
-  { name: "Cryptography", level: 78, category: "security" },
-  { name: "Digital Forensics", level: 72, category: "security" },
-  { name: "Reverse Engineering", level: 68, category: "security" },
+  { name: "Cryptography", level: 60, category: "security" },
+  { name: "Digital Forensics", level: 50, category: "security" },
+  { name: "Reverse Engineering", level: 41, category: "security" },
 ];
 
 export const projects: Project[] = [

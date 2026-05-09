@@ -7,7 +7,7 @@ interface CardProps {
   children: React.ReactNode;
   className?: string;
   hover?: boolean;
-  glow?: 'pink' | 'purple' | 'cyan' | 'none';
+  glow?: 'pink' | 'purple' | 'cyan' | 'green' | 'none';
   delay?: number;
   onClick?: () => void;
 }
@@ -26,23 +26,25 @@ export function Card({
     pink: 'hover:shadow-pink-500/20 hover:border-pink-500/30',
     purple: 'hover:shadow-purple-500/20 hover:border-purple-500/30',
     cyan: 'hover:shadow-cyan-500/20 hover:border-cyan-500/30',
+    green: 'hover:shadow-green-500/20 hover:border-green-500/30',
     none: '',
   };
 
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 20 }}
       animate={isIntersecting ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.5, delay, ease: 'easeOut' }}
+      transition={{ duration: 0.4, delay, ease: 'easeOut' }}
       whileHover={hover ? { y: -4, scale: 1.01 } : undefined}
       className={`
         relative overflow-hidden
-        bg-white/5 backdrop-blur-xl 
+        bg-gradient-to-br from-white/5 to-white/[0.02]
+        backdrop-blur-xl 
         border border-white/10 
-        rounded-2xl p-6
+        rounded-xl p-6
         transition-all duration-300
-        hover:border-white/20 hover:bg-white/[0.07]
+        hover:border-green-500/30 hover:bg-white/[0.08]
         ${glowStyles[glow]}
         ${onClick ? 'cursor-pointer' : ''}
         ${className}
@@ -50,7 +52,7 @@ export function Card({
       onClick={onClick}
     >
       {/* Subtle gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-br from-green-500/[0.02] to-transparent pointer-events-none opacity-0 hover:opacity-100 transition-opacity duration-500" />
       
       {/* Content */}
       <div className="relative z-10">{children}</div>
