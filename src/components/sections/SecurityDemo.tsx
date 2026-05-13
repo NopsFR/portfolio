@@ -19,7 +19,8 @@ import {
   FaDatabase,
   FaBug,
   FaCode,
-  FaFish
+  FaFish,
+  FaExternalLinkAlt
 } from 'react-icons/fa';
 
 interface IpInfo {
@@ -262,20 +263,20 @@ export function SecurityDemo() {
         </div>
 
         {/* Tab Navigation */}
-        <div className="flex flex-wrap justify-center gap-2 mb-8">
+        <div className="flex flex-wrap justify-center gap-3 mb-8">
           {tabs.map((tab) => {
             const Icon = tab.icon;
             return (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`px-4 py-2 rounded-lg flex items-center gap-2 transition-all ${
+                className={`px-5 py-3 rounded-lg flex items-center gap-2 transition-all text-base ${
                   activeTab === tab.id
-                    ? 'bg-cyan-500 text-white'
+                    ? 'bg-cyan-500 text-white font-semibold'
                     : 'bg-gray-800 text-gray-400 hover:text-white hover:bg-gray-700'
                 }`}
               >
-                <Icon className="text-sm" />
+                <Icon className="text-lg" />
                 <span className="hidden sm:inline">{tab.label}</span>
               </button>
             );
@@ -401,7 +402,7 @@ export function SecurityDemo() {
               <button
                 onClick={requestGeolocation}
                 disabled={geoLoading}
-                className="px-4 py-2 bg-green-600 hover:bg-green-700 disabled:bg-gray-600 rounded-lg font-semibold transition-colors"
+                className="px-6 py-3 bg-green-600 hover:bg-green-700 disabled:bg-gray-600 rounded-lg font-semibold transition-colors text-base"
               >
                 {geoLocation ? 'Update Location' : 'Request Location Access'}
               </button>
@@ -447,14 +448,14 @@ export function SecurityDemo() {
                   <button
                     onClick={requestCamera}
                     disabled={cameraLoading}
-                    className="px-4 py-2 bg-purple-600 hover:bg-purple-700 disabled:bg-gray-600 rounded-lg font-semibold transition-colors"
+                    className="px-6 py-3 bg-purple-600 hover:bg-purple-700 disabled:bg-gray-600 rounded-lg font-semibold transition-colors text-base"
                   >
                     Request Camera Access
                   </button>
                 ) : (
                   <button
                     onClick={stopCamera}
-                    className="px-4 py-2 bg-red-600 hover:bg-red-700 rounded-lg font-semibold transition-colors"
+                    className="px-6 py-3 bg-red-600 hover:bg-red-700 rounded-lg font-semibold transition-colors text-base"
                   >
                     Stop Camera
                   </button>
@@ -546,7 +547,7 @@ export function SecurityDemo() {
               <div className="flex gap-4">
                 <button
                   onClick={setTestCookie}
-                  className="px-4 py-2 bg-green-600 hover:bg-green-700 rounded-lg font-semibold transition-colors"
+                  className="px-6 py-3 bg-green-600 hover:bg-green-700 rounded-lg font-semibold transition-colors text-base"
                 >
                   Set Test Cookie
                 </button>
@@ -558,7 +559,7 @@ export function SecurityDemo() {
                     });
                     setCookies([]);
                   }}
-                  className="px-4 py-2 bg-red-600 hover:bg-red-700 rounded-lg font-semibold transition-colors"
+                  className="px-6 py-3 bg-red-600 hover:bg-red-700 rounded-lg font-semibold transition-colors text-base"
                 >
                   Delete All Cookies
                 </button>
@@ -687,7 +688,16 @@ export function SecurityDemo() {
         <div className="mt-6 text-center">
           <p className="text-gray-500 text-sm">
             <FaLock className="inline mr-2" />
-            All data is collected locally in your browser and is not transmitted anywhere.
+            All data is collected locally in your browser and is not transmitted anywhere.{' '}
+            <a 
+              href="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-cyan-400 hover:text-cyan-300 inline-flex items-center gap-1"
+            >
+              Learn how local storage works
+              <FaExternalLinkAlt className="text-xs" />
+            </a>
           </p>
         </div>
       </div>

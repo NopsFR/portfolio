@@ -181,7 +181,6 @@ export const navigation = [
   { name: "Cybersecurity 101", href: "#cybersecurity-101" },
   { name: "Security Demo", href: "#security-demo" },
   { name: "Contact", href: "#contact" },
-  { name: "Chat", href: "#chat" },
 ];
 
 // Hacker-themed background images for sections

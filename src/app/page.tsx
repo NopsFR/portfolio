@@ -68,11 +68,6 @@ const GitHubSecurity = dynamic(
   { ssr: false }
 );
 
-const ChatBot = dynamic(
-  () => import('@/components/sections').then((mod) => mod.ChatBot),
-  { ssr: false }
-);
-
 const Contact = dynamic(
   () => import('@/components/sections').then((mod) => mod.Contact),
   { ssr: false }
@@ -85,7 +80,7 @@ const Footer = dynamic(
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen w-full flex flex-col items-center">
+    <main className="relative min-h-screen w-full flex flex-col items-center pt-0">
       {/* Background Effects */}
       <AnimatedBackground />
       <MouseGlow />
@@ -128,9 +123,6 @@ export default function Home() {
 
       {/* Footer */}
       <Footer />
-
-      {/* AI Chatbot */}
-      <ChatBot />
     </main>
   );
 }

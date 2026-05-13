@@ -25,31 +25,31 @@ export function AnimatedBackground() {
   const [snowflakes, setSnowflakes] = useState<{ id: number; left: number; size: number; duration: number; delay: number; opacity: number; }[]>([]);
 
   useEffect(() => {
-    // Generate random background orbs/particles (kept subtle)
+    // Generate random background orbs/particles (reduced for performance)
     const newParticles: Particle[] = [];
-    for (let i = 0; i < 20; i++) {
+    for (let i = 0; i < 8; i++) {
       newParticles.push({
         id: i,
         x: Math.random() * 100,
         y: Math.random() * 100,
-        size: Math.random() * 300 + 100,
-        duration: Math.random() * 20 + 10,
+        size: Math.random() * 200 + 80,
+        duration: Math.random() * 15 + 12,
         delay: Math.random() * 5,
       });
     }
     setParticles(newParticles);
 
-    // Generate subtle snow particles
+    // Generate subtle snow particles (reduced for performance)
     const flakes: { id: number; left: number; size: number; duration: number; delay: number; opacity: number; }[] = [];
-    const count = 80; // slightly increased for visibility but still subtle
+    const count = 30; // reduced from 80 for better performance
     for (let i = 0; i < count; i++) {
       flakes.push({
         id: i,
         left: Math.random() * 100,
-        size: Math.random() * 3 + 1.2,
-        duration: Math.random() * 10 + 6,
-        delay: Math.random() * -12,
-        opacity: Math.random() * 0.16 + 0.04,
+        size: Math.random() * 2 + 1,
+        duration: Math.random() * 10 + 8,
+        delay: Math.random() * -10,
+        opacity: Math.random() * 0.1 + 0.03,
       });
     }
     setSnowflakes(flakes);

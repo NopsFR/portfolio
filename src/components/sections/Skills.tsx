@@ -73,6 +73,21 @@ export function Skills() {
 
   const currentCategory = skillCategories.find((c) => c.id === activeCategory);
   const colors = colorMap[currentCategory?.color as keyof typeof colorMap];
+  const categoryColor = currentCategory?.color as 'green' | 'cyan' | 'emerald' | undefined;
+
+  // Filter skills to only show those >= 50% and pad to maintain 6 grid
+  const filteredSkills = currentCategory?.skills
+    .filter(skill => skill.level >= 50)
+    .sort((a, b) => b.level - a.level) || [];
+
+  // Pad to nearest multiple of 6 for consistent grid layout
+  const paddedSkills = [...filteredSkills];
+  const remainder = paddedSkills.length % 6;
+  if (remainder !== 0) {
+    for (let i = 0; i < 6 - remainder; i++) {
+      paddedSkills.push({ name: '', level: 0, category: currentCategory?.id as any });
+    }
+  }
 
   return (
     <section id="skills" className="py-20 px-4 relative">
@@ -96,6 +111,9 @@ export function Skills() {
             A comprehensive overview of my technical abilities across
             cybersecurity, development, and tools
           </p>
+          <p className="text-gray-500 max-w-2xl mx-auto text-sm mt-4 px-4">
+            Skills developed through <span className="text-green-400">TryHackMe labs</span>, <span className="text-cyan-400">real-world projects</span>, and <span className="text-emerald-400">professional experience</span>
+          </p>
         </motion.div>
 
         {/* Category Tabs */}
@@ -118,77 +136,86 @@ export function Skills() {
           ))}
         </div>
 
-        {/* Skills Grid */}
-        <div className="grid sm:grid-cols-2 gap-4 md:gap-6">
+        {/* Skills Grid - 6 column layout with filtered skills (>=50%) */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-4">
           <AnimatePresence mode="popLayout">
-            {currentCategory?.skills.map((skill, index) => (
+            {paddedSkills.map((skill, index) => (
               <motion.div
-                key={skill.name}
+                key={`${skill.name}-${index}`}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.3, delay: index * 0.05 }}
+                transition={{ duration: 0.3, delay: index * 0.03 }}
               >
-                <Card hover={false} className="h-full">
-                  <div className="flex items-center justify-between mb-3">
-                    <h3 className="text-white font-medium text-sm sm:text-base">
-                      {skill.name}
-                    </h3>
-                  <Badge variant={currentCategory.color as 'green' | 'cyan' | 'default'} size="sm">
-                      {skill.level}%
-                    </Badge>
-                  </div>
-                  <SkillBar
-                    name=""
-                    level={skill.level}
-                    delay={index * 0.05}
-                  />
-                </Card>
+                {skill.name ? (
+                  <Card hover={false} className="h-full">
+                    <div className="flex items-center justify-between mb-3">
+                      <h3 className="text-white font-medium text-xs sm:text-sm truncate" title={skill.name}>
+                        {skill.name}
+                      </h3>
+                      <Badge variant={categoryColor === 'emerald' ? 'default' : categoryColor || 'default'} size="sm">
+                        {skill.level}%
+                      </Badge>
+                    </div>
+                    <SkillBar
+                      name=""
+                      level={skill.level}
+                      delay={index * 0.03}
+                    />
+                  </Card>
+                ) : (
+                  <div className="h-full opacity-0" />
+                )}
               </motion.div>
             ))}
           </AnimatePresence>
         </div>
 
-        {/* Additional Skills Tags */}
+        {/* Additional Skills Tags - More Prominent Section */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mt-12"
+          className="mt-16 md:mt-20"
         >
-          <h3 className="text-center text-gray-400 mb-6 text-sm sm:text-base">
-            Also familiar with
-          </h3>
-          <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
-            {[
-              'Git',
-              'Docker',
-              'Linux',
-              'Windows',
-              'Networking',
-              'REST APIs',
-              'GraphQL',
-              'PostgreSQL',
-              'MongoDB',
-              'Redis',
-              'Nginx',
-              'Bash',
-              'PowerShell',
-              'OWASP',
-              'SIEM',
-            ].map((tech, index) => (
-              <motion.span
-                key={tech}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.3, delay: index * 0.03 }}
-                className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-white/5 border border-white/10 text-gray-400 text-xs sm:text-sm hover:text-green-400 hover:border-green-500/30 hover:bg-green-500/10 transition-all duration-300 cursor-default font-mono"
-              >
-                {tech}
-              </motion.span>
-            ))}
+          <div className="bg-gradient-to-r from-white/5 to-white/2 border border-white/10 rounded-2xl p-6 md:p-8">
+            <h3 className="text-center text-white font-semibold text-lg md:text-xl mb-2">
+              Also Familiar With
+            </h3>
+            <p className="text-center text-gray-500 text-sm mb-6">
+              Additional technologies and tools I have experience with
+            </p>
+            <div className="flex flex-wrap justify-center gap-3 md:gap-4">
+              {[
+                'Git',
+                'Docker',
+                'Linux',
+                'Windows',
+                'Networking',
+                'REST APIs',
+                'GraphQL',
+                'PostgreSQL',
+                'MongoDB',
+                'Redis',
+                'Nginx',
+                'Bash',
+                'PowerShell',
+                'OWASP',
+                'SIEM',
+              ].map((tech, index) => (
+                <motion.span
+                  key={tech}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.3, delay: index * 0.03 }}
+                  className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-gradient-to-r from-white/10 to-white/5 border border-white/20 text-gray-300 text-sm sm:text-base hover:text-green-400 hover:border-green-500/50 hover:from-green-500/20 hover:to-green-500/5 transition-all duration-300 cursor-default font-mono shadow-lg"
+                >
+                  {tech}
+                </motion.span>
+              ))}
+            </div>
           </div>
         </motion.div>
       </Container>
